@@ -11,6 +11,12 @@ let attractory = require ("./attractory.js"),
 	main_street_usa = require("./main_street_usa.js"),
 	tomorrowland = require("./tomorrowland.js");
 
+//let Handlebars = require("hbsfy/runtime");
+let headerTemplate = require('../templates/header.hbs');
+
+
+
+
 
 attractory.loadAreas().then((data) => {
 	displayAreas(data);
@@ -19,7 +25,9 @@ attractory.loadAreas().then((data) => {
 }).then(
     (data) => {
     displayParkInfo(data);
+    $("#header-handlebars").append(headerTemplate(data[0]));
 });
+
 
 
 //tamela making load park info function
