@@ -9,6 +9,10 @@ let attractory = require ("./attractory.js"),
 	frontierland = require("./frontierland.js"),
 	liberty_square = require("./liberty_square.js"),
 	main_street_usa = require("./main_street_usa.js"),
+
+	tomorrowland = require("./tomorrowland.js"),
+	eventStuff = require("./events.js");
+
 	tomorrowland = require("./tomorrowland.js");
 
 //let Handlebars = require("hbsfy/runtime");
@@ -18,6 +22,8 @@ let headerTemplate = require('../templates/header.hbs');
 
 
 
+
+//load the area data and display areas if load is successful
 attractory.loadAreas().then((data) => {
 	displayAreas(data);
     return attractory.loadParkInfo();
@@ -44,6 +50,7 @@ $(".help").click(() => {
 
 
 
+
 function displayAreas(dat){
 
 	let output = $(".output");
@@ -65,7 +72,14 @@ function displayAreas(dat){
 	console.log("output",output, id);
 
 
-	});
+	
+	});	
+	//console.log("eventStuff", eventStuff);
+	eventStuff();
+
+
+	
+
 
 
 }

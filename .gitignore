@@ -1,4 +1,6 @@
 .sass-cache
 node_modules
 theme-park.json
-dist/
+dist/app.js
+css
+
