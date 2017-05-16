@@ -92,6 +92,7 @@ arguments[4][1][0].apply(exports,arguments)
 
 console.log("i am in main.js");
 
+
 let attractory = require ("./attractory.js"),
 	adventureland = require("./adventureland.js"),
 	fantasyland = require("./fantasyland.js"),
@@ -103,15 +104,26 @@ let attractory = require ("./attractory.js"),
 
 attractory.loadAreas().then((data) => {
 	displayAreas(data);
+    return attractory.loadParkInfo();
 
+}).then(
+    (data) => {
+    displayParkInfo(data);
 });
+
+
+//tamela making load park info function
+function displayParkInfo (data) {
+    console.log("is this my park info?", data);
+}
+
 
 $(".help").click(() => {
 	console.log("card-block clicked");
 	//when it is clicked you should have id
 	//dependent on id call function to populate that area
 });
-		
+
 
 
 function displayAreas(dat){
@@ -129,20 +141,20 @@ function displayAreas(dat){
 					<div class='col-md-6 wrapper'><div class='card text-center'>
 					<div class='card-block' id="card--${id}" style="border: 2px solid">
   					<h4 class='card-title'><a href=''>`+name+`</h4></a>
-  			    	<h5 class='card-text'>`+id+`</h5> 
+  			    	<h5 class='card-text'>`+id+`</h5>
   				    </div></div></div></section>`);
-	
+
 	console.log("output",output, id);
 
-	
-	});	
+
+	});
 
 
 }
 
 
 
-					
+
 
 
 
