@@ -11,6 +11,12 @@ let attractory = require ("./attractory.js"),
 	main_street_usa = require("./main_street_usa.js"),
 	tomorrowland = require("./tomorrowland.js");
 
+//let Handlebars = require("hbsfy/runtime");
+let headerTemplate = require('../templates/header.hbs');
+
+
+
+
 
 attractory.loadAreas().then((data) => {
 	displayAreas(data);
@@ -19,7 +25,9 @@ attractory.loadAreas().then((data) => {
 }).then(
     (data) => {
     displayParkInfo(data);
+    $("#header-handlebars").append(headerTemplate(data[0]));
 });
+
 
 
 //tamela making load park info function
@@ -62,8 +70,29 @@ function displayAreas(dat){
 
 }
 
+let Handlebars = require("hbsfy/runtime"),
+	hf_data = require("..templates/hbs-data.js"),
+	events = require("./events.js"),//page is still being worked on-- may need to change this file name
+	footerTemplate = require("../templates/footer.hbs"),
+	headerTemplate = require("../templates/header.hbs");
+
+	Handlebars.registerHelper("increment", (value)=> parseInt(value) + 1);
+
+	$("#header-handlebars").append(headerTemplate(hf_data));
+	$("#footer-handlebars").append(footerTemplate(hf_data));
 
 
+	function popPage (event) {
+		let footerDiv = document.creatElement("div");
+		let headerDiv = document.createElement("div");
+
+		footerDiv.innerHTML = footerTemplate(event);
+		$("#footer-div").append(footerDiv);
+		//event js file
+
+		headerDiv.innerHTML = headerDiv(event);
+		$("#header-div").append(headerDiv);
+	}
 
 
 
