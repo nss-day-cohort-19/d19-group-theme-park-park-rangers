@@ -1,5 +1,7 @@
 "use strict";
 
+var _ = require("../lib/node_modules/lodash");
+
 console.log("i am in attractory.js");
 
 let loadParkInfo = () => {
@@ -17,13 +19,16 @@ let loadParkInfo = () => {
 			});
 };
 
-let loadAttractions = () => {
+let loadAttractions = (id) => {
 			return new Promise ((resolve, reject) => {
 				$.ajax({
 					url:"https://theme-park-data.firebaseio.com/attractions.json",
 					success: (data) => {
 						console.log("success", data);
-						resolve(data);//resolve passes data to then
+						let my_filter = _.filter(data, (item) => {
+							return item.area_id == id;
+						});
+						resolve(data, my_filter);//resolve passes data to then
 					},
 					error: () => {
 						reject("Attractions Data Failed to Load");

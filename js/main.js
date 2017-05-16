@@ -8,21 +8,14 @@ let attractory = require ("./attractory.js"),
 	frontierland = require("./frontierland.js"),
 	liberty_square = require("./liberty_square.js"),
 	main_street_usa = require("./main_street_usa.js"),
-	tomorrowland = require("./tomorrowland.js");
+	tomorrowland = require("./tomorrowland.js"),
+	eventStuff = require("./events.js");
 
-
+//load the area data and display areas if load is successful
 attractory.loadAreas().then((data) => {
 	displayAreas(data);
 
 });
-
-$(".help").click(() => {
-	console.log("card-block clicked");
-	//when it is clicked you should have id
-	//dependent on id call function to populate that area
-});
-		
-
 
 function displayAreas(dat){
 
@@ -46,6 +39,8 @@ function displayAreas(dat){
 
 	
 	});	
+	//console.log("eventStuff", eventStuff);
+	eventStuff();
 
 
 }
