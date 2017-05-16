@@ -5,7 +5,7 @@ console.log("i am in attractory.js");
 let loadParkInfo = () => {
 			return new Promise ((resolve, reject) => {
 				$.ajax({
-					url:"https://park-rangers.firebaseio.com/park-info.json",
+					url:"https://theme-park-data.firebaseio.com/park-info.json",
 					success: (data) => {
 						console.log("success", data);
 						resolve(data);//resolve passes data to then
@@ -20,7 +20,7 @@ let loadParkInfo = () => {
 let loadAttractions = () => {
 			return new Promise ((resolve, reject) => {
 				$.ajax({
-					url:"https://park-rangers.firebaseio.com/attractions.json",
+					url:"https://theme-park-data.firebaseio.com/attractions.json",
 					success: (data) => {
 						console.log("success", data);
 						resolve(data);//resolve passes data to then
@@ -50,7 +50,7 @@ let loadAttractionTypes = () => {
 let loadAreas = () => {
 			return new Promise ((resolve, reject) => {
 				$.ajax({
-					url:"https://park-rangers.firebaseio.com/areas.json",
+					url:"https://theme-park-data.firebaseio.com/areas.json",
 					success: (data) => {
 						console.log("loadAreas loaded", data);
 						resolve(data);//resolve passes data to then
@@ -62,4 +62,19 @@ let loadAreas = () => {
 			});
 };
 
-module.exports = {loadParkInfo, loadAttractions, loadAttractionTypes, loadAreas};
+let loadDetails = (id) => {
+			return new Promise ((resolve, reject) => {
+				$.ajax({
+					url:"https://theme-park-data.firebaseio.com",
+					success: (data) => {
+						console.log("area details for that id loaded");
+						resolve(data.areas);//resolve passes data to then
+					},
+					error: () => {
+						reject(new Error("Area details failed to load"));
+					}
+				});
+			});
+};
+
+module.exports = {loadParkInfo, loadAttractions, loadAttractionTypes, loadAreas, loadDetails};
