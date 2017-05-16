@@ -9,8 +9,19 @@ let attractory = require ("./attractory.js"),
 	frontierland = require("./frontierland.js"),
 	liberty_square = require("./liberty_square.js"),
 	main_street_usa = require("./main_street_usa.js"),
+
 	tomorrowland = require("./tomorrowland.js"),
 	eventStuff = require("./events.js");
+
+	tomorrowland = require("./tomorrowland.js");
+
+//let Handlebars = require("hbsfy/runtime");
+let headerTemplate = require('../templates/header.hbs');
+
+
+
+
+
 
 //load the area data and display areas if load is successful
 attractory.loadAreas().then((data) => {
@@ -20,7 +31,9 @@ attractory.loadAreas().then((data) => {
 }).then(
     (data) => {
     displayParkInfo(data);
+    $("#header-handlebars").append(headerTemplate(data[0]));
 });
+
 
 
 //tamela making load park info function
