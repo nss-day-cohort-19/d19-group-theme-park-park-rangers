@@ -21,6 +21,7 @@
     "matchdep": "^1.0.1"
   },
   "dependencies": {
-    "handlebars": "^4.0.8"
+    "handlebars": "^4.0.8",
+    "hbsfy": "^2.7.0"
   }
 }
