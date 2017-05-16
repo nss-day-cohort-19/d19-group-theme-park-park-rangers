@@ -70,29 +70,7 @@ function displayAreas(dat){
 
 }
 
-let Handlebars = require("hbsfy/runtime"),
-	hf_data = require("..templates/hbs-data.js"),
-	events = require("./events.js"),//page is still being worked on-- may need to change this file name
-	footerTemplate = require("../templates/footer.hbs"),
-	headerTemplate = require("../templates/header.hbs");
 
-	Handlebars.registerHelper("increment", (value)=> parseInt(value) + 1);
-
-	$("#header-handlebars").append(headerTemplate(hf_data));
-	$("#footer-handlebars").append(footerTemplate(hf_data));
-
-
-	function popPage (event) {
-		let footerDiv = document.creatElement("div");
-		let headerDiv = document.createElement("div");
-
-		footerDiv.innerHTML = footerTemplate(event);
-		$("#footer-div").append(footerDiv);
-		//event js file
-
-		headerDiv.innerHTML = headerDiv(event);
-		$("#header-div").append(headerDiv);
-	}
 
 
 
