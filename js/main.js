@@ -14,8 +14,9 @@ let attractory = require ("./attractory.js"),
 
 
 let headerTemplate = require('../templates/header.hbs'),
-	footerTemplate = require('../templates/footer.hbs'),
-    areaTemplate = require('../templates/main.hbs');
+	 footerTemplate = require('../templates/footer.hbs'),
+    areaTemplate = require('../templates/main.hbs'),
+    attractTemplate = require('../templates/attract.hbs');
 
 
 
