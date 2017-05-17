@@ -40,7 +40,7 @@ function activateEvents(){
 
 		}else if(my_id == "sec--6"){
 			tomorrowland.populateTomorrowland();
-			console.log("my id is", my_id);
+			console.log("my id is in 6", my_id);
 
 		}else if(my_id == "sec--7"){
 			cindrella.populateCindrellaland();

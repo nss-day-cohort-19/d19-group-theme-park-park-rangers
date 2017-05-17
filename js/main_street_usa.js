@@ -1,19 +1,19 @@
 "use strict";
 
-let attractory = require("./attractory.js");
+let attractory = require("./attractory.js"),
+areaTemplate = require('../templates/main.hbs');
 
 function populateMainStreet(){
-	let attractions = {};
-	attractory.loadAttractionTypes()
-	.then((data) => {//this line passes filtered data from loadAttractionTypes to loadAttractions
-		attractions = attractory.loadAttractions(1);
-		displayMainStreetDetails(attractions);
+	console.log("within populateMainStreet");
+	attractory.loadAttractions(1)
+	.then((data) => {
+		displayMainStreetDetails(data);
 	});
 }
 
 function displayMainStreetDetails(dat){
-
-	console.log("MainStreet attractions", dat);
+	let output = $(".output");
+	$(".output").append(areaTemplate(dat));
 
 }
 
