@@ -9,13 +9,15 @@ let attractory = require ("./attractory.js"),
 	frontierland = require("./frontierland.js"),
 	liberty_square = require("./liberty_square.js"),
 	main_street_usa = require("./main_street_usa.js"),
-	eventStuff = require("./events.js"),
-	tomorrowland = require("./tomorrowland.js");
+	tomorrowland = require("./tomorrowland.js"),
+	cinderellaland = require("./cindrella.js"),
+	eventStuff = require("./events.js");
 
 
 let headerTemplate = require('../templates/header.hbs'),
-	footerTemplate = require('../templates/footer.hbs'),
-    areaTemplate = require('../templates/main.hbs');
+	 footerTemplate = require('../templates/footer.hbs'),
+    areaTemplate = require('../templates/main.hbs'),
+    attractTemplate = require('../templates/attract.hbs');
 
 
 
@@ -29,7 +31,10 @@ attractory.loadAreas().then((data) => {
     displayParkInfo(data);
 });
 
-
+////////////////////////////////////////////
+function fetchShowTimeData(data) {
+  console.log("What is this", data);
+}
 
 
 //tamela making load park info function
