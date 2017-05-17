@@ -117,9 +117,26 @@ function loopevents(currentTime) {
     console.log("is this my current time", currentTime);
 //    console.log("is this my attraction Data?", attractionData);
     for (let i = 0; i < attractionData.length; i++) {
-    console.log("this is some data", attractionData[i].times);
+//    console.log("this is some data", attractionData[i].times);
+        let timeData = attractionData[i];
+        if (timeData.times !== undefined) {
+            let timesArray = timeData.times;
+//            console.log("do I have an array of times?", timesArray);
+            for (let poop = 0; poop < timesArray.length; poop++) {
+                let moreTimesArray = timesArray[poop];
+                console.log("is this my poop array? What is it?", moreTimesArray);
+            }
+        }
     }
 }
+
+
+
+
+
+
+
+
 
 $(".help").click(() => {
 	console.log("card-block clicked");
