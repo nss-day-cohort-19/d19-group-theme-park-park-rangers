@@ -13,11 +13,13 @@ let attractory = require ("./attractory.js"),
 	tomorrowland = require("./tomorrowland.js");
 
 let headerTemplate = require('../templates/header.hbs');
+let areaTemplate = require('../templates/main.hbs');
 
 
 //load the area data and display areas if load is successful
 attractory.loadAreas().then((data) => {
 	displayAreas(data);
+	$("#output").append(areaTemplate(data));
     return attractory.loadParkInfo();
 
 }).then(
@@ -64,12 +66,12 @@ function displayAreas(dat){
   	    color = value.colorTheme,
   	    id = value.id;
 
-	output.append(`<section id="sec--${id}" class="help">
-					<div class='col-md-6 wrapper'><div class='card text-center'>
-					<div class='card-block' id="card--${id}" style="border: 2px solid">
-  					<h4 class='card-title'><a href=''>`+name+`</h4></a>
-  			    	<h5 class='card-text'>`+id+`</h5>
-  				    </div></div></div></section>`);
+	// output.append(`<section id="sec--${id}" class="help">
+	// 				<div class='col-md-6 wrapper'><div class='card text-center'>
+	// 				<div class='card-block' id="card--${id}" style="border: 2px solid">
+ //  					<h4 class='card-title'><a href=''>`+name+`</h4></a>
+ //  			    	<h5 class='card-text'>`+id+`</h5>
+ //  				    </div></div></div></section>`);
 
 	console.log("output",output, id);
 
