@@ -129,7 +129,7 @@ function loopevents(currentTime) {
         }
     }
 }
-
+//if starting at 830 27 half hours if closing at 10
 
 
 
