@@ -33,18 +33,14 @@ attractory.loadAreas().then((data) => {
     test = data;
     console.log("line 32", test);
         return attractory.loadAttractionTypes();
-}).then(
-    (data) => {
-    testtypes = data;
-    console.log("are these my types", data);
-});
+}).
 
 
 
 
 //tamela making load park info function
 function displayParkInfo (data) {
-    
+
     $("#header-handlebars").append(headerTemplate(data[0]));
     $("#footer-handlebars").append(footerTemplate(data[0]));
 
