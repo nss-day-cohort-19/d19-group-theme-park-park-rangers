@@ -1,27 +1,17 @@
 "use strict";
 
 console.log("i am in main.js");
-
-
 let attractory = require ("./attractory.js"),
 	adventureland = require("./adventureland.js"),
 	fantasyland = require("./fantasyland.js"),
 	frontierland = require("./frontierland.js"),
 	liberty_square = require("./liberty_square.js"),
 	main_street_usa = require("./main_street_usa.js"),
-
-	tomorrowland = require("./tomorrowland.js"),
-	eventStuff = require("./events.js");
-
+	eventStuff = require("./events.js"),
 	tomorrowland = require("./tomorrowland.js");
 
 //let Handlebars = require("hbsfy/runtime");
 let headerTemplate = require('../templates/header.hbs');
-
-
-
-
-
 
 //load the area data and display areas if load is successful
 attractory.loadAreas().then((data) => {
@@ -34,8 +24,6 @@ attractory.loadAreas().then((data) => {
     $("#header-handlebars").append(headerTemplate(data[0]));
 });
 
-
-
 //tamela making load park info function
 function displayParkInfo (data) {
     console.log("is this my park info?", data);
@@ -47,9 +35,6 @@ $(".help").click(() => {
 	//when it is clicked you should have id
 	//dependent on id call function to populate that area
 });
-
-
-
 
 function displayAreas(dat){
 
@@ -76,37 +61,8 @@ function displayAreas(dat){
 	});	
 	//console.log("eventStuff", eventStuff);
 	eventStuff();
-
-
-	
-
-
-
 }
 
-let Handlebars = require("hbsfy/runtime"),
-	hf_data = require("..templates/hbs-data.js"),
-	events = require("./events.js"),//page is still being worked on-- may need to change this file name
-	footerTemplate = require("../templates/footer.hbs"),
-	headerTemplate = require("../templates/header.hbs");
-
-	Handlebars.registerHelper("increment", (value)=> parseInt(value) + 1);
-
-	$("#header-handlebars").append(headerTemplate(hf_data));
-	$("#footer-handlebars").append(footerTemplate(hf_data));
-
-
-	function popPage (event) {
-		let footerDiv = document.creatElement("div");
-		let headerDiv = document.createElement("div");
-
-		footerDiv.innerHTML = footerTemplate(event);
-		$("#footer-div").append(footerDiv);
-		//event js file
-
-		headerDiv.innerHTML = headerDiv(event);
-		$("#header-div").append(headerDiv);
-	}
 
 
 
