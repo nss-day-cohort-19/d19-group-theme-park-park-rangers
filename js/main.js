@@ -12,7 +12,8 @@ let attractory = require ("./attractory.js"),
 	eventStuff = require("./events.js"),
 	tomorrowland = require("./tomorrowland.js");
 
-let headerTemplate = require('../templates/header.hbs');
+let headerTemplate = require('../templates/header.hbs'),
+	footerTemplate = require('../templates/footer.hbs');
 
 
 //load the area data and display areas if load is successful
@@ -31,6 +32,7 @@ attractory.loadAreas().then((data) => {
 //tamela making load park info function
 function displayParkInfo (data) {
     $("#header-handlebars").append(headerTemplate(data[0]));
+    $("#footer-handlebars").append(footerTemplate(data[0]));
 
     //Might use this if I can get sub dropwn-menues to work
 //    $(document).ready(function(){
