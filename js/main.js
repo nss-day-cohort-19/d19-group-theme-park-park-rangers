@@ -14,15 +14,14 @@ let attractory = require ("./attractory.js"),
 
 
 let headerTemplate = require('../templates/header.hbs'),
-	footerTemplate = require('../templates/footer.hbs');
-let areaTemplate = require('../templates/main.hbs');
+	footerTemplate = require('../templates/footer.hbs'),
+    areaTemplate = require('../templates/main.hbs');
 
 
 
 //load the area data and display areas if load is successful
 attractory.loadAreas().then((data) => {
 	displayAreas(data);
-	$("#output").append(areaTemplate(data));
     return attractory.loadParkInfo();
 
 }).then(
@@ -60,10 +59,11 @@ $(".help").click(() => {
 });
 
 function displayAreas(dat){
-
+	//$("#output").append(areaTemplate(data));
 	let output = $(".output");
+	$(".output").append(areaTemplate(dat));
 	//console.log("i am within displayAreas function", dat);
-	$.each( dat, function(key, value) {
+	/*$.each( dat, function(key, value) {
   	//console.log( key ,  ": " , value.name );
   	let name = value.name,
   	    desc = value.description,
@@ -81,7 +81,7 @@ function displayAreas(dat){
 
 
 
-	});
+	});*/
 	//console.log("eventStuff", eventStuff);
 	eventStuff();
 }

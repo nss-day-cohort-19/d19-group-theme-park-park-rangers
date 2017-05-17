@@ -10,6 +10,7 @@ let main_street_usa = require("./main_street_usa.js"),
 function activateEvents(){
 	//event listener for click event in particular area
 	$(".help").click(() => {
+		
 		console.log("card-block clicked");
 		//when it is clicked you should have id
 		//dependent on id call function to populate that area
