@@ -19,6 +19,7 @@ let headerTemplate = require('../templates/header.hbs'),
     areaTemplate = require('../templates/main.hbs'),
     attractTemplate = require('../templates/attract.hbs');
 let attractionData;
+let test;
 
 //load the area data and display areas if load is successful
 attractory.loadAreas().then((data) => {
@@ -28,11 +29,14 @@ attractory.loadAreas().then((data) => {
 
 }).then(
     (data) => {
-    displayParkInfo(data);
-        return attractory.getTimes();
+    test = data;
+    return attractory.getTimes();
 }).then(
     (data) => {
-       attractionData = data;
+
+        attractionData = data;
+        console.log("is this parkdata?", test);
+        displayParkInfo(test);
 });
 
 
@@ -45,11 +49,11 @@ function displayParkInfo (data) {
 
 }
 
-function selectMenu () {
-    $("#li--1").click( (event) =>{
-        console.log("event is happening", event.target);
-    });
-}
+//function selectMenu () {
+//    $("#li--1").click( (event) =>{
+//        console.log("event is happening", event.target);
+//    });
+//}
 // for (let i= 0; i < 4; i++) {
 //        let createLI = `<li id="id--${i}">Ride</li>`;
 //        $("#menu-select").append(createLI);
@@ -108,6 +112,7 @@ function selectMenu () {
 
 function loopevents(currentTime) {
     console.log("is this my current time", currentTime);
+//    console.log("is this my attraction Data?", attractionData);
     for (let i = 0; i < attractionData.length; i++) {
     console.log("this is some data", attractionData[i].times);
     }
