@@ -10,7 +10,8 @@ let attractory = require ("./attractory.js"),
 	liberty_square = require("./liberty_square.js"),
 	main_street_usa = require("./main_street_usa.js"),
 	eventStuff = require("./events.js"),
-	tomorrowland = require("./tomorrowland.js");
+	tomorrowland = require("./tomorrowland.js"),
+	cindrellaland = require("./cindrella.js");
 
 
 let headerTemplate = require('../templates/header.hbs'),
@@ -46,17 +47,6 @@ function displayParkInfo (data) {
 //        });
 //    });
 }
-
-
-
-
-
-
-$(".help").click(() => {
-	console.log("card-block clicked");
-	//when it is clicked you should have id
-	//dependent on id call function to populate that area
-});
 
 function displayAreas(dat){
 	//$("#output").append(areaTemplate(data));
