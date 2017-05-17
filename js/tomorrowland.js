@@ -13,7 +13,7 @@ function populateTomorrowland(){
 
 function displayTomorrowlandAttractions(dat){
 	let output = $(".output");
-		$(".output").append(areaTemplate(dat));
+	$(".output").append(areaTemplate(dat));
 	console.log("tomorrowland attractions", dat);
 	$.each( dat, function( key, value ) {
   		console.log( key ,": " , value );

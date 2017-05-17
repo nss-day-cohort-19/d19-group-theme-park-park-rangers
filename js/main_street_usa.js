@@ -1,6 +1,7 @@
 "use strict";
 
-let attractory = require("./attractory.js");
+let attractory = require("./attractory.js"),
+areaTemplate = require('../templates/main.hbs');
 
 function populateMainStreet(){
 	let attractions = {};
@@ -11,6 +12,7 @@ function populateMainStreet(){
 }
 
 function displayMainStreetAttractions(dat){
+	$(".output").append(areaTemplate(dat));
 	console.log("mainstreet attractions", dat);
 	$.each( dat, function( key, value ) {
   		console.log( key ,": " , value );
