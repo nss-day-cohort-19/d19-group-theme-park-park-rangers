@@ -25,7 +25,7 @@ let loadAttractions = (id) => {
 				$.ajax({
 					url:"https://theme-park-data.firebaseio.com/attractions.json",
 					success: (data) => {
-						console.log("success", data);
+						console.log("successfully returned loadAttractions");
 						let my_attr_filter = _.filter(data, (item) => {
 							console.log("within loadAttractions filter");
 							return ((item.area_id == id) && (item.type_id == 1 || item.type_id == 2 || item.type_id == 3 || item.type_id == 5));
@@ -44,7 +44,7 @@ let loadAttractionTypes = () => {
 				$.ajax({
 					url:"https://theme-park-data.firebaseio.com/attraction_types.json",
 					success: (data) => {
-						console.log("success", data);
+						console.log("successfully loaded loadAttractionTypes");
 						//filter using lodash
 						let my_type_filter = _.filter(data, (item) => {
 							console.log("within loadAttractionTypes filter");
