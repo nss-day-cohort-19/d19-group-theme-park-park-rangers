@@ -17,17 +17,25 @@ let headerTemplate = require('../templates/header.hbs'),
 	 footerTemplate = require('../templates/footer.hbs'),
     areaTemplate = require('../templates/main.hbs'),
     attractTemplate = require('../templates/attract.hbs');
-
-
+let test;
+let testtypes;
 
 //load the area data and display areas if load is successful
 attractory.loadAreas().then((data) => {
 	displayAreas(data);
+    console.log("line 26", data);
     return attractory.loadParkInfo();
 
 }).then(
     (data) => {
     displayParkInfo(data);
+    test = data;
+    console.log("line 32", test);
+        return attractory.loadAttractionTypes();
+}).then(
+    (data) => {
+    testtypes = data;
+    console.log("are these my types", data);
 });
 
 
@@ -35,6 +43,7 @@ attractory.loadAreas().then((data) => {
 
 //tamela making load park info function
 function displayParkInfo (data) {
+    
     $("#header-handlebars").append(headerTemplate(data[0]));
     $("#footer-handlebars").append(footerTemplate(data[0]));
 
