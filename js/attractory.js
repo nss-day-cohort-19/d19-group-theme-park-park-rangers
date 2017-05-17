@@ -89,4 +89,20 @@ let loadDetails = (id) => {
 			});
 };
 
-module.exports = {loadParkInfo, loadAttractions, loadAttractionTypes, loadAreas, loadDetails};
+let getTimes = () => {
+    return new Promise ((resolve, reject) => {
+        $.ajax({
+					url:"https://theme-park-data.firebaseio.com/attractions.json",
+					success: (data) => {
+						console.log("area details for that id loaded");
+						resolve(data);//resolve passes data to then
+					},
+					error: () => {
+						reject(new Error("Area details failed to load"));
+					}
+				});
+
+    });
+};
+
+module.exports = {loadParkInfo, loadAttractions, loadAttractionTypes, loadAreas, loadDetails, getTimes};
