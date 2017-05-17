@@ -1,6 +1,8 @@
 "use strict";
 
 console.log("i am in main.js");
+
+require("bootstrap");
 let attractory = require ("./attractory.js"),
 	adventureland = require("./adventureland.js"),
 	fantasyland = require("./fantasyland.js"),
@@ -10,9 +12,9 @@ let attractory = require ("./attractory.js"),
 	eventStuff = require("./events.js"),
 	tomorrowland = require("./tomorrowland.js");
 
-//let Handlebars = require("hbsfy/runtime");
 let headerTemplate = require('../templates/header.hbs');
 let areaTemplate = require('../templates/main.hbs');
+
 
 //load the area data and display areas if load is successful
 attractory.loadAreas().then((data) => {
@@ -23,22 +25,28 @@ attractory.loadAreas().then((data) => {
 }).then(
     (data) => {
     displayParkInfo(data);
-    $("#header-handlebars").append(headerTemplate(data[0]));
 });
 
-// attractory.loadAreas().then((data) =>{
-// 	displayAreas(data);
-// 	return attractory.loadParkInfo();
-// }).then(
-// 	(data) => {
-// 	// $("#output").append(areaTemplate(data[0]));
-// 	});
+
 
 
 //tamela making load park info function
 function displayParkInfo (data) {
-    console.log("is this my park info?", data);
+    $("#header-handlebars").append(headerTemplate(data[0]));
+
+    //Might use this if I can get sub dropwn-menues to work
+//    $(document).ready(function(){
+//        $('.dropdown-submenu a.test').on("click", function(e){
+//            $(this).next('ul').toggle();
+//            e.stopPropagation();
+//            e.preventDefault();
+//        });
+//    });
 }
+
+
+
+
 
 
 $(".help").click(() => {
@@ -68,8 +76,8 @@ function displayAreas(dat){
 	console.log("output",output, id);
 
 
-	
-	});	
+
+	});
 	//console.log("eventStuff", eventStuff);
 	eventStuff();
 }
