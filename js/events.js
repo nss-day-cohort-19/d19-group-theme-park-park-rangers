@@ -7,7 +7,6 @@ let main_street_usa = require("./main_street_usa.js"),
 	liberty_square = require("./liberty_square.js"),
 	tomorrowland = require("./tomorrowland.js");
 
-
 function activateEvents(){
 	//event listener for click event in particular area
 	$(".help").click(() => {

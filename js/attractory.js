@@ -1,6 +1,7 @@
 "use strict";
-
+//syntax to use lodash
 var _ = require("../lib/node_modules/lodash");
+
 
 console.log("i am in attractory.js");
 
@@ -18,17 +19,18 @@ let loadParkInfo = () => {
 				});
 			});
 };
-
+//pass in area_id and type_id array
 let loadAttractions = (id) => {
 			return new Promise ((resolve, reject) => {
 				$.ajax({
 					url:"https://theme-park-data.firebaseio.com/attractions.json",
 					success: (data) => {
 						console.log("success", data);
-						let my_filter = _.filter(data, (item) => {
-							return item.area_id == id;
+						let my_attr_filter = _.filter(data, (item) => {
+							console.log("within loadAttractions filter");
+							return ((item.area_id == id) && (item.type_id == 1 || item.type_id == 2 || item.type_id == 3 || item.type_id == 5));
 						});
-						resolve(data, my_filter);//resolve passes data to then
+						resolve(my_attr_filter);//resolve passes data to then
 					},
 					error: () => {
 						reject("Attractions Data Failed to Load");
@@ -40,10 +42,15 @@ let loadAttractions = (id) => {
 let loadAttractionTypes = () => {
 			return new Promise ((resolve, reject) => {
 				$.ajax({
-					url:"https://park-rangers.firebaseio.com/attraction_types.json",
+					url:"https://theme-park-data.firebaseio.com/attraction_types.json",
 					success: (data) => {
 						console.log("success", data);
-						resolve(data);//resolve passes data to then
+						//filter using lodash
+						let my_type_filter = _.filter(data, (item) => {
+							console.log("within loadAttractionTypes filter");
+							return (item.type_id == 1 || item.type_id == 2 || item.type_id == 3 || item.type_id == 5);
+						});
+						resolve(my_type_filter);//resolve passes data to then
 					},
 					error: () => {
 						reject("Attraction Types Data Failed to Load");
