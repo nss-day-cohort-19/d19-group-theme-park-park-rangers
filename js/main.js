@@ -31,7 +31,10 @@ attractory.loadAreas().then((data) => {
     displayParkInfo(data);
 });
 
-
+////////////////////////////////////////////
+function fetchShowTimeData(data) {
+  console.log("What is this", data);
+}
 
 
 //tamela making load park info function
