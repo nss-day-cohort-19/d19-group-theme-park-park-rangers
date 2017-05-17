@@ -57,7 +57,7 @@ function displayAreas(dat){
 
 	let output = $(".output");
 	//console.log("i am within displayAreas function", dat);
-	$.each( dat, function( key, value ) {
+	$.each( dat, function(key, value) {
   	//console.log( key ,  ": " , value.name );
   	let name = value.name,
   	    desc = value.description,
