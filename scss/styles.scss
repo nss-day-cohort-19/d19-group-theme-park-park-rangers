@@ -82,16 +82,35 @@ $card-block-border: 1px solid black;
   font-weight: bold;
 }
 
+.container-fluid,
+.jumbotron-fluid {
+  background-color: $background;
+}
 
+.footer-style {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+}
 
+.footer-p {
+  display: inline-block;
+  padding-left: 30px;
+  padding-right: 30px;
+  color: $white;
+}
 
+.copyright {
+  padding-left: 50px;
+  padding-right: 50px;
+}
 
+a {
+  list-style-type: none;
+  color: $white;
+}
 
-
-
-
-
-
-
-
+a:hover {
+  color: $mainStreet-color;
+}
 
