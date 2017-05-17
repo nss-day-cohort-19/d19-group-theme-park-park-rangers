@@ -18,8 +18,7 @@ let headerTemplate = require('../templates/header.hbs'),
 	 footerTemplate = require('../templates/footer.hbs'),
     areaTemplate = require('../templates/main.hbs'),
     attractTemplate = require('../templates/attract.hbs');
-let test;
-let testtypes;
+let attractionData;
 
 //load the area data and display areas if load is successful
 attractory.loadAreas().then((data) => {
@@ -30,31 +29,33 @@ attractory.loadAreas().then((data) => {
 }).then(
     (data) => {
     displayParkInfo(data);
-    test = data;
-    console.log("line 32", test);
-        return attractory.loadAttractionTypes();
-}).
+        return attractory.getTimes();
+}).then(
+    (data) => {
+       attractionData = data;
+});
 
 
 
 
 //tamela making load park info function
 function displayParkInfo (data) {
-
     $("#header-handlebars").append(headerTemplate(data[0]));
     $("#footer-handlebars").append(footerTemplate(data[0]));
 
-    //Might use this if I can get sub dropwn-menues to work
-//    $(document).ready(function(){
-//        $('.dropdown-submenu a.test').on("click", function(e){
-//            $(this).next('ul').toggle();
-//            e.stopPropagation();
-//            e.preventDefault();
-//        });
-//    });
 }
 
-
+function selectMenu () {
+    $("#li--1").click( (event) =>{
+        console.log("event is happening", event.target);
+    });
+}
+// for (let i= 0; i < 4; i++) {
+//        let createLI = `<li id="id--${i}">Ride</li>`;
+//        $("#menu-select").append(createLI);
+////        console.log("is line 140 logging", createLI);
+//
+//    }
  function displayTime(currentTime, hours, minutes, seconds) {
 
 
@@ -95,16 +96,22 @@ function displayParkInfo (data) {
 
    $('#increment30').on('click', function() {
        console.log("is click event happening line 87");
-     currentTime.setMinutes(currentTime.getMinutes() + 30);
-     var hours = currentTime.getHours();
-     var minutes = currentTime.getMinutes();
+        currentTime.setMinutes(currentTime.getMinutes() + 30);
+        var hours = currentTime.getHours();
+        var minutes = currentTime.getMinutes();
 //     var seconds = currentTime.getSeconds();
-     displayTime(currentTime, hours, minutes);
+        displayTime(currentTime, hours, minutes);
+        loopevents($("#clock").text());
 
    });
  });
 
-
+function loopevents(currentTime) {
+    console.log("is this my current time", currentTime);
+    for (let i = 0; i < attractionData.length; i++) {
+    console.log("this is some data", attractionData[i].times);
+    }
+}
 
 $(".help").click(() => {
 	console.log("card-block clicked");
