@@ -2,6 +2,7 @@
 
 var _ = require("../lib/node_modules/lodash");
 
+
 console.log("i am in attractory.js");
 
 let loadParkInfo = () => {
