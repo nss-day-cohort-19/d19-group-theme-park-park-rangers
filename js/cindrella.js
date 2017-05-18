@@ -1,7 +1,8 @@
 "use strict";
 
 let attractory = require("./attractory.js"),
-areaTemplate = require('../templates/main.hbs');
+	areaTemplate = require("../templates/main.hbs"),
+	attractTemplate = require("../templates/attract.hbs");
 
 function populateCindrellaland(){
 	console.log("within populateCindrellaland");
@@ -12,8 +13,8 @@ function populateCindrellaland(){
 }
 
 function displayCindrellalandAttractions(dat){
-	let output = $(".output");
-	$(".output").append(areaTemplate(dat));
+	let output = $(".help");
+	$(".output").append(attractTemplate(dat));
 
 }
 
