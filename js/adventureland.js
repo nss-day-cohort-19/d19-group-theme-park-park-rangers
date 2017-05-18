@@ -13,7 +13,9 @@ function populateAdventureland(){
 
 function displayAdventurelandAttractions(dat){
 	let output = $(".help");
-	$(".output").append(attractTemplate(dat));
+	let attDiv = $('<div id="modal2" class="modal fade">');
+	attDiv.append(attractTemplate(dat));
+	$(".attractions").append(attDiv);
 	console.log("Adventureland attractions", dat);
 	$.each( dat, function( key, value ) {
   		console.log( key ,": " , value );
