@@ -19,31 +19,31 @@ function activateEvents(){
 		console.log("card", card, my_id);
 		if(my_id == "sec--6"){
 			tomorrowland.populateTomorrowland();
-			$('#modal6').modal('toggle');
+			// $('#modal6').modal('toggle');      //////commented all of these out and put them each in the corresponding .js file after the data is appended......the data wasn't loading first in order for the modal to be brought up on just one click
 			console.log("my id is", my_id);
 		}else if(my_id == "sec--1"){
 			main_street_usa.populateMainStreet();
-			$('#modal1').modal('toggle');
+			// $('#modal1').modal('toggle');
 			console.log("my id is", my_id);
 		}else if(my_id == "sec--4"){
 			liberty_square.populateLibertySquare();
-			$('#modal4').modal('toggle');
+			// $('#modal4').modal('toggle');
 			console.log("my id is", my_id);
 		}else if(my_id == "sec--5"){
 			fantasyland.populateFantasyland();
-			$('#modal5').modal('toggle');
+			// $('#modal5').modal('toggle');
 			console.log("my id is", my_id);
 		}else if(my_id == "sec--3"){
 			frontierland.populateFrontierland();
-			$('#modal3').modal('toggle');
+			// $('#modal3').modal('toggle');
 			console.log("my id is", my_id);
 		}else if(my_id == "sec--2"){
 			adventureland.populateAdventureland();
-			$('#modal2').modal('toggle');
+			// $('#modal2').modal('toggle');
 			console.log("my id is", my_id);
 		}else if(my_id == "sec--7"){
 			cindrellaland.populateCindrellaland();
-			$('#modal7').modal('toggle');
+			// $('#modal7').modal('toggle');
 			console.log("my id is", my_id);
 		}
 	});
