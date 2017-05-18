@@ -25,10 +25,10 @@ let loadAttractions = (id) => {
 				$.ajax({
 					url:"https://theme-park-data.firebaseio.com/attractions.json",
 					success: (data) => {
-						console.log("successfully returned loadAttractions");
+						console.log("success", data);
 						let my_attr_filter = _.filter(data, (item) => {
 							console.log("within loadAttractions filter");
-							return ((item.area_id == id) && (item.type_id == 1 || item.type_id == 2 || item.type_id == 3 || item.type_id == 5));
+							return ((item.area_id == id) && (item.type_id == 1 || item.type_id == 2 || item.type_id == 3 || item.type_id == 5) && item.times !== "");
 						});
 						resolve(my_attr_filter);//resolve passes data to then
 					},
@@ -44,11 +44,11 @@ let loadAttractionTypes = () => {
 				$.ajax({
 					url:"https://theme-park-data.firebaseio.com/attraction_types.json",
 					success: (data) => {
-						console.log("successfully loaded loadAttractionTypes");
+						console.log("success", data);
 						//filter using lodash
 						let my_type_filter = _.filter(data, (item) => {
 							console.log("within loadAttractionTypes filter");
-							return (item.type_id == 1 || item.type_id == 2 || item.type_id == 3 || item.type_id == 5);
+							return (item.id == 1 || item.id == 2 || item.id == 3 || item.id == 5);
 						});
 						resolve(my_type_filter);//resolve passes data to then
 					},
@@ -89,20 +89,4 @@ let loadDetails = (id) => {
 			});
 };
 
-let getTimes = () => {
-    return new Promise ((resolve, reject) => {
-        $.ajax({
-					url:"https://theme-park-data.firebaseio.com/attractions.json",
-					success: (data) => {
-						console.log("area details for that id loaded");
-						resolve(data);//resolve passes data to then
-					},
-					error: () => {
-						reject(new Error("Area details failed to load"));
-					}
-				});
-
-    });
-};
-
-module.exports = {loadParkInfo, loadAttractions, loadAttractionTypes, loadAreas, loadDetails, getTimes};
+module.exports = {loadParkInfo, loadAttractions, loadAttractionTypes, loadAreas, loadDetails};

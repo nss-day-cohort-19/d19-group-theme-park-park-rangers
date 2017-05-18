@@ -1,20 +1,23 @@
 "use strict";
 
 let attractory = require("./attractory.js"),
-areaTemplate = require('../templates/main.hbs');
+	areaTemplate = require("../templates/main.hbs"),
+	attractTemplate = require("../templates/attract.hbs");
 
-function populateLibertySquareland(){
-	console.log("within populateLibertySquareland");
+function populateLibertySquare(){
 	attractory.loadAttractions(4)
 	.then((data) => {
-		displayLibertySquarelandDetails(data);
+		displayLibertySquareAttractions(data);
 	});
 }
 
-function displayLibertySquarelandDetails(dat){
-	let output = $(".output");
-	$(".output").append(areaTemplate(dat));
-
+function displayLibertySquareAttractions(dat){
+	let output = $(".help");
+	$(".output").append(attractTemplate(dat));
+	console.log("LibertySquare attractions", dat);
+	$.each( dat, function( key, value ) {
+  		console.log( key ,": " , value );
+	});
 }
 
-module.exports = {populateLibertySquareland, displayLibertySquarelandDetails};
+module.exports = {populateLibertySquare, displayLibertySquareAttractions};
