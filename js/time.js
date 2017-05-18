@@ -93,7 +93,12 @@ function loopevents(totalMinutes, menuMeridian, parkInfo, attractionData, parkTy
                         $("#time-display").append(cards);
                     }
 
-                }else if ((attractMinutes - totalMinutes) <= 30 && (attractMinutes - totalMinutes) >=0) {
+
+//////// REMOVED = EQUAL SIGNS (before 30 and 0 on line 100) IN ORDER TO: display only times between 30 min periods rather than equal to 30 min incrememnt
+///////// for example: 9:30 will show everything up to 9:55 not including 10:00  //// k bye ---------
+
+                }else if ((attractMinutes - totalMinutes) < 30 && (attractMinutes - totalMinutes) > 0) {
+
                     //setting up a special condition to test for 12pm
                     if((menuMeridian === meridian) || (totalMinutes === 690 && time === "12:00PM")){
                         let magicalTurdObject = {name: attractObj.name, time: time, attractionType: attractObj.type_id};
