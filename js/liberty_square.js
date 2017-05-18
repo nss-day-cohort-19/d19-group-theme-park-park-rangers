@@ -13,7 +13,9 @@ function populateLibertySquare(){
 
 function displayLibertySquareAttractions(dat){
 	let output = $(".help");
-	$(".output").append(attractTemplate(dat));
+	let attDiv = $('<div id="modal4" class="modal fade">');
+	attDiv.append(attractTemplate(dat));
+	$(".attractions").append(attDiv);
 	console.log("LibertySquare attractions", dat);
 	$.each( dat, function( key, value ) {
   		console.log( key ,": " , value );

@@ -14,7 +14,13 @@ function populateCindrellaland(){
 
 function displayCindrellalandAttractions(dat){
 	let output = $(".help");
-	$(".output").append(attractTemplate(dat));
+	let attDiv = $('<div id="modal7" class="modal fade">');
+	attDiv.append(attractTemplate(dat));
+	$(".attractions").append(attDiv);
+	console.log("tomorrowland attractions", dat);
+	$.each( dat, function( key, value ) {
+  		console.log( key ,": " , value );
+	});
 
 }
 

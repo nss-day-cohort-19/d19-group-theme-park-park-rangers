@@ -5,7 +5,7 @@ let attractory = require("./attractory.js"),
 	attractTemplate = require("../templates/attract.hbs");
 
 function populateFrontierland(){
-	attractory.loadAttractions(6)
+	attractory.loadAttractions(3)
 	.then((data) => {
 		displayFrontierlandAttractions(data);
 	});
@@ -13,7 +13,9 @@ function populateFrontierland(){
 
 function displayFrontierlandAttractions(dat){
 	let output = $(".help");
-	$(".output").append(attractTemplate(dat));
+	let attDiv = $('<div id="modal3" class="modal fade">');
+	attDiv.append(attractTemplate(dat));
+	$(".attractions").append(attDiv);
 	console.log("Frontierland attractions", dat);
 	$.each( dat, function( key, value ) {
   		console.log( key ,": " , value );
