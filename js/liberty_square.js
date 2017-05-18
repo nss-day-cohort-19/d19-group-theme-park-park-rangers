@@ -12,8 +12,7 @@ function populateLibertySquare(){
 }
 
 function displayLibertySquareAttractions(dat){
-	let output = $(".help");
-	$(".output").append(attractTemplate(dat));
+	$("#card--4").append(attractTemplate(dat));
 	console.log("LibertySquare attractions", dat);
 	$.each( dat, function( key, value ) {
   		console.log( key ,": " , value );

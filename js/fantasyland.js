@@ -5,15 +5,14 @@ let attractory = require("./attractory.js"),
 	attractTemplate = require("../templates/attract.hbs");
 
 function populateFantasyland(){
-	attractory.loadAttractions(6)
+	attractory.loadAttractions(5)
 	.then((data) => {
 		displayFantasylandAttractions(data);
 	});
 }
 
 function displayFantasylandAttractions(dat){
-	let output = $(".help");
-	$(".output").append(attractTemplate(dat));
+	$("#card--5").append(attractTemplate(dat));
 	console.log("Fantasyland attractions", dat);
 	$.each( dat, function( key, value ) {
   		console.log( key ,": " , value );

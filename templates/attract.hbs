@@ -1,10 +1,12 @@
-{{#each attraction}}
-	<section>
-		<div id="attractions">
-			<ul>
-				<li>{{name}}</li>
-				<li>{{times}}</li>
-			<ul>
+{{#each this}}
+<section id="sec--{{id}}" class="help">
+	<div class="col-md-6 wrapper">
+		<div class="card-text-center">
+			<div class='card-block' id="card--{{id}}" style="border: 2px solid">
+				<h4 class="card-title"><a>{{name}}</a></h4>
+				<h5 class="card-text">{{times}}</h5>
+			</div>
 		</div>
-	</section>
+	</div>
+</section>
 {{/each}}

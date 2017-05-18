@@ -12,10 +12,8 @@ let attractory = require ("./attractory.js"),
 	eventStuff = require("./events.js"),
 	tomorrowland = require("./tomorrowland.js"),
 	cinderellaland = require("./cindrella.js"),
-  tortureTime = require("./time.js");
-
-
-let headerTemplate = require('../templates/header.hbs'),
+  	tortureTime = require("./time.js"),
+  	headerTemplate = require('../templates/header.hbs'),
     footerTemplate = require('../templates/footer.hbs'),
     areaTemplate = require('../templates/main.hbs'),
     attractTemplate = require('../templates/attract.hbs');

@@ -12,8 +12,7 @@ function populateAdventureland(){
 }
 
 function displayAdventurelandAttractions(dat){
-	let output = $(".help");
-	$(".output").append(attractTemplate(dat));
+	$("#card--2").append(attractTemplate(dat));
 	console.log("Adventureland attractions", dat);
 	$.each( dat, function( key, value ) {
   		console.log( key ,": " , value );

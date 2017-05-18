@@ -12,8 +12,7 @@ function populateMainStreet(){
 }
 
 function displayMainStreetAttractions(dat){
-	let output = $(".help");
-	$(".output").append(attractTemplate(dat));
+	$("#card--1").append(attractTemplate(dat));
 	console.log("mainstreet attractions", dat);
 	$.each( dat, function( key, value ) {
   		console.log( key ,": " , value );
