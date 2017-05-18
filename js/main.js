@@ -9,10 +9,11 @@ let attractory = require ("./attractory.js"),
 	frontierland = require("./frontierland.js"),
 	liberty_square = require("./liberty_square.js"),
 	main_street_usa = require("./main_street_usa.js"),
+	eventStuff = require("./events.js"),
 	tomorrowland = require("./tomorrowland.js"),
 	cinderellaland = require("./cindrella.js"),
 	eventStuff = require("./events.js"),
-    tortureTime = require("./time.js");
+  tortureTime = require("./time.js");
 
 
 let headerTemplate = require('../templates/header.hbs'),
@@ -27,9 +28,7 @@ let parkType;
 //load the area data and display areas if load is successful
 attractory.loadAreas().then((data) => {
 	displayAreas(data);
-    console.log("line 26", data);
     return attractory.loadParkInfo();
-
 }).then(
     (data) => {
     parkInfo = data;
@@ -47,32 +46,21 @@ attractory.loadAreas().then((data) => {
 }).catch(console.error);
 
 
+
 //tamela making load park info function
 function displayParkInfo (data) {
     $("#header-handlebars").append(headerTemplate(data[0]));
     $("#footer-handlebars").append(footerTemplate(data[0]));
 
-}
-
-//function selectMenu () {
-//    $("#li--1").click( (event) =>{
-//        console.log("event is happening", event.target);
+    //Might use this if I can get sub dropwn-menues to work
+//    $(document).ready(function(){
+//        $('.dropdown-submenu a.test').on("click", function(e){
+//            $(this).next('ul').toggle();
+//            e.stopPropagation();
+//            e.preventDefault();
+//        });
 //    });
-//}
-// for (let i= 0; i < 4; i++) {
-//        let createLI = `<li id="id--${i}">Ride</li>`;
-//        $("#menu-select").append(createLI);
-////        console.log("is line 140 logging", createLI);
-//
-//    }
 
-
-
-$(".help").click(() => {
-	console.log("card-block clicked");
-	//when it is clicked you should have id
-	//dependent on id call function to populate that area
-});
 
 function displayAreas(dat){
 	//$("#output").append(areaTemplate(data));

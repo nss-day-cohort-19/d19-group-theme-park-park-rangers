@@ -1,20 +1,23 @@
 "use strict";
 
 let attractory = require("./attractory.js"),
-areaTemplate = require('../templates/main.hbs');
+	areaTemplate = require("../templates/main.hbs"),
+	attractTemplate = require("../templates/attract.hbs");
 
 function populateMainStreet(){
-	console.log("within populateMainStreet");
 	attractory.loadAttractions(1)
 	.then((data) => {
-		displayMainStreetDetails(data);
+		displayMainStreetAttractions(data);
 	});
 }
 
-function displayMainStreetDetails(dat){
-	let output = $(".output");
-	$(".output").append(areaTemplate(dat));
-
+function displayMainStreetAttractions(dat){
+	let output = $(".help");
+	$(".output").append(attractTemplate(dat));
+	console.log("mainstreet attractions", dat);
+	$.each( dat, function( key, value ) {
+  		console.log( key ,": " , value );
+	});
 }
 
-module.exports = {populateMainStreet, displayMainStreetDetails};
+module.exports = {populateMainStreet, displayMainStreetAttractions};

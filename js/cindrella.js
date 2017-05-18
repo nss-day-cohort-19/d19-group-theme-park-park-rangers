@@ -1,20 +1,21 @@
 "use strict";
 
 let attractory = require("./attractory.js"),
-areaTemplate = require('../templates/main.hbs');
+	areaTemplate = require("../templates/main.hbs"),
+	attractTemplate = require("../templates/attract.hbs");
 
 function populateCindrellaland(){
 	console.log("within populateCindrellaland");
 	attractory.loadAttractions(7)
 	.then((data) => {
-		displayCindrellalandDetails(data);
+		displayCindrellalandAttractions(data);
 	});
 }
 
-function displayCindrellalandDetails(dat){
-	let output = $(".output");
-	$(".output").append(areaTemplate(dat));
+function displayCindrellalandAttractions(dat){
+	let output = $(".help");
+	$(".output").append(attractTemplate(dat));
 
 }
 
-module.exports = {populateCindrellaland, displayCindrellalandDetails};
+module.exports = {populateCindrellaland, displayCindrellalandAttractions};
