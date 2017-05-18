@@ -11,25 +11,39 @@ let attractory = require ("./attractory.js"),
 	main_street_usa = require("./main_street_usa.js"),
 	eventStuff = require("./events.js"),
 	tomorrowland = require("./tomorrowland.js"),
-	cindrellaland = require("./cindrella.js");
+	cinderellaland = require("./cindrella.js"),
+	eventStuff = require("./events.js"),
+  tortureTime = require("./time.js");
 
 
 let headerTemplate = require('../templates/header.hbs'),
-	footerTemplate = require('../templates/footer.hbs'),
-    areaTemplate = require('../templates/main.hbs');
+    footerTemplate = require('../templates/footer.hbs'),
+    areaTemplate = require('../templates/main.hbs'),
+    attractTemplate = require('../templates/attract.hbs');
 
-
+let attractionData;
+let parkInfo;
+let parkType;
 
 //load the area data and display areas if load is successful
 attractory.loadAreas().then((data) => {
 	displayAreas(data);
     return attractory.loadParkInfo();
-
 }).then(
     (data) => {
-    displayParkInfo(data);
-});
+    parkInfo = data;
+    return attractory.getTimes();
+}).then(
+    (data) => {
 
+        attractionData = data;
+        return attractory.loadAttractionTypes();
+}).then(
+    (data) => {
+    parkType = data;
+    displayParkInfo(parkInfo);
+    tortureTime.timeFunction(parkInfo, attractionData, parkType);
+}).catch(console.error);
 
 
 
@@ -46,7 +60,7 @@ function displayParkInfo (data) {
 //            e.preventDefault();
 //        });
 //    });
-}
+
 
 function displayAreas(dat){
 	//$("#output").append(areaTemplate(data));
