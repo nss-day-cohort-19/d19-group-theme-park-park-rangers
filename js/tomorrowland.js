@@ -7,7 +7,7 @@ let attractory = require("./attractory.js"),
 function populateTomorrowland(){
 	attractory.loadAttractions(6)
 	.then((data) => {
-		displayTomorrowlandAttractions(data);
+		return displayTomorrowlandAttractions(data); //need to return to make sure data is there
 	});
 }
 
@@ -16,6 +16,7 @@ function displayTomorrowlandAttractions(dat){
 	let attDiv = $('<div id="modal6" class="modal fade">');
 	attDiv.append(attractTemplate(dat));
 	$(".attractions").append(attDiv);
+	$('#modal6').modal('toggle'); //data has to be loaded first before the modal so only requires one click to open
 	console.log("tomorrowland attractions", dat);
 	$.each( dat, function( key, value ) {
   		console.log( key ,": " , value );
