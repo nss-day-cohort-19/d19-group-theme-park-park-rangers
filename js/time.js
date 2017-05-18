@@ -1,5 +1,4 @@
 "use strict";
-console.log("time baby");
 
 let timeFunction = function timeMenu(data, attractionData, parkType)
 {
@@ -16,22 +15,24 @@ let timeFunction = function timeMenu(data, attractionData, parkType)
 		if ((i+1) % 2 === 0){
 			newTime = (hour + 1) + ":00";
 			hour++;
-//			console.log("Time: " + newTime);
 		}
 		else{
 			newTime = hour + ":30";
-//			console.log("Time: " + newTime);
 		}
-		if(newTime == "12:30"){
+
+        if(newTime == "12:30"){
 			pastNoon = true;
 			hour = 0;
 		}
 
-		newTime += (pastNoon || newTime == "12:00") ? "PM" : "AM";
+        if (pastNoon === true || newTime === "12:00") {
+            newTime += "PM";
+        } else {
+            newTime += "AM";
+        }
+
 		menuItem = `<option><a href="#">${newTime}</a></option>`;
 		$("#times").append(menuItem);
-
-		if (pastNoon && newTime == closingTime + ":00pm") break;
 	}
 
     $("#increment30").click((event) =>{
@@ -45,6 +46,7 @@ let timeFunction = function timeMenu(data, attractionData, parkType)
     });
 };
 
+
 function loopevents(totalMinutes, menuMeridian, parkInfo, attractionData, parkType) {
     let hours;
     let minutes;
@@ -52,6 +54,7 @@ function loopevents(totalMinutes, menuMeridian, parkInfo, attractionData, parkTy
     let openingHour = parseInt(parkInfo[0].operating_hours[0].opening);
     let openingMinutes = openingHour * 60;
     let timeArray4Objects = [];
+
     for (let i = 0; i < attractionData.length; i++) {
         let attractObj = attractionData[i];
         if (attractObj.times !== undefined) {
@@ -73,26 +76,20 @@ function loopevents(totalMinutes, menuMeridian, parkInfo, attractionData, parkTy
 
                         let magicalTurdObject = {name: attractObj.name, time: time, attractionType: attractObj.type_id};
                         timeArray4Objects.push(magicalTurdObject);
-                        console.log("do we have a magical turd?", timeArray4Objects);
-                        console.log("types????? DID you make it?", parkType);
                     }
 
                 }else if ((attractMinutes - totalMinutes) <= 30 && (attractMinutes - totalMinutes) >=0) {
                     //setting up a special condition to test for 12pm
                     if((menuMeridian === meridian) || (totalMinutes === 690 && time === "12:00PM")){
-                        console.log("Did we make another turd?", attractObj.name, time);
                         let magicalTurdObject = {name: attractObj.name, time: time, attractionType: attractObj.type_id};
                         timeArray4Objects.push(magicalTurdObject);
-                        console.log("12pm are you where you should be?", magicalTurdObject);
                     }
-
                 }
 
                 let timeCompiled = " " + hours + ":" + minutes + " " + meridian;
                 let eventName = attractObj.name;
                 let attractTypeID = attractObj.type_id;
                 let eventAndTime = eventName + timeCompiled;
-
             }
         }
     }
