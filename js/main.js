@@ -14,23 +14,36 @@ let attractory = require ("./attractory.js"),
 	cindrellaland = require("./cindrella.js");
 
 
+
 let headerTemplate = require('../templates/header.hbs'),
-	footerTemplate = require('../templates/footer.hbs'),
-    areaTemplate = require('../templates/main.hbs');
-
-
+	 footerTemplate = require('../templates/footer.hbs'),
+    areaTemplate = require('../templates/main.hbs'),
+    attractTemplate = require('../templates/attract.hbs');
+let attractionData;
+let test;
 
 //load the area data and display areas if load is successful
 attractory.loadAreas().then((data) => {
 	displayAreas(data);
+    console.log("line 26", data);
     return attractory.loadParkInfo();
 
 }).then(
     (data) => {
-    displayParkInfo(data);
+    test = data;
+    return attractory.getTimes();
+}).then(
+    (data) => {
+
+        attractionData = data;
+        console.log("is this parkdata?", test);
+        displayParkInfo(test);
 });
 
-
+////////////////////////////////////////////
+function fetchShowTimeData(data) {
+  console.log("What is this", data);
+}
 
 
 //tamela making load park info function
@@ -38,14 +51,84 @@ function displayParkInfo (data) {
     $("#header-handlebars").append(headerTemplate(data[0]));
     $("#footer-handlebars").append(footerTemplate(data[0]));
 
-    //Might use this if I can get sub dropwn-menues to work
-//    $(document).ready(function(){
-//        $('.dropdown-submenu a.test').on("click", function(e){
-//            $(this).next('ul').toggle();
-//            e.stopPropagation();
-//            e.preventDefault();
-//        });
+}
+
+//function selectMenu () {
+//    $("#li--1").click( (event) =>{
+//        console.log("event is happening", event.target);
 //    });
+//}
+// for (let i= 0; i < 4; i++) {
+//        let createLI = `<li id="id--${i}">Ride</li>`;
+//        $("#menu-select").append(createLI);
+////        console.log("is line 140 logging", createLI);
+//
+//    }
+ function displayTime(currentTime, hours, minutes, seconds) {
+
+
+   var meridiem = "am"; // Default is AM
+
+   if (hours > 12) {
+     hours = hours - 12; // Convert to 12-hour format
+     meridiem = "PM"; // Keep track of the meridiem
+   }
+
+   if (hours === 0) {
+     hours = 12;
+   }
+
+   if (hours < 10) {
+
+     hours = "0" + hours;
+   }
+
+   if (minutes < 10) {
+     minutes = "0" + minutes;
+   }
+   if (seconds < 10) {
+     seconds = "0" + seconds;
+   }
+
+   $('#clock').text(hours + ":" + minutes + " " + meridiem);
+ }
+
+ $(function() {
+
+   var currentTime = new Date();
+   var hours = currentTime.getHours();
+   var minutes = currentTime.getMinutes();
+//   var seconds = currentTime.getSeconds();
+
+   displayTime(currentTime, hours, minutes);
+
+   $('#increment30').on('click', function() {
+       console.log("is click event happening line 87");
+        currentTime.setMinutes(currentTime.getMinutes() + 30);
+        var hours = currentTime.getHours();
+        var minutes = currentTime.getMinutes();
+//     var seconds = currentTime.getSeconds();
+        displayTime(currentTime, hours, minutes);
+        loopevents($("#clock").text());
+
+   });
+ });
+
+function loopevents(currentTime) {
+    console.log("is this my current time", currentTime);
+//    console.log("is this my attraction Data?", attractionData);
+    for (let i = 0; i < attractionData.length; i++) {
+//    console.log("this is some data", attractionData[i].times);
+        let timeData = attractionData[i];
+        if (timeData.times !== undefined) {
+            let timesArray = timeData.times;
+//            console.log("do I have an array of times?", timesArray);
+            for (let poop = 0; poop < timesArray.length; poop++) {
+                let moreTimesArray = timesArray[poop];
+                console.log("is this my poop array? What is it?", moreTimesArray);
+            }
+        }
+    }
 }
 
 function displayAreas(dat){

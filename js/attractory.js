@@ -25,7 +25,7 @@ let loadAttractions = (id) => {
 				$.ajax({
 					url:"https://theme-park-data.firebaseio.com/attractions.json",
 					success: (data) => {
-						console.log("success", data);
+						console.log("successfully returned loadAttractions");
 						let my_attr_filter = _.filter(data, (item) => {
 							console.log("within loadAttractions filter");
 							return ((item.area_id == id) && (item.type_id == 1 || item.type_id == 2 || item.type_id == 3 || item.type_id == 5) && item.times !== "");
@@ -44,7 +44,7 @@ let loadAttractionTypes = () => {
 				$.ajax({
 					url:"https://theme-park-data.firebaseio.com/attraction_types.json",
 					success: (data) => {
-						console.log("success", data);
+						console.log("successfully loaded loadAttractionTypes");
 						//filter using lodash
 						let my_type_filter = _.filter(data, (item) => {
 							console.log("within loadAttractionTypes filter");
@@ -89,4 +89,20 @@ let loadDetails = (id) => {
 			});
 };
 
-module.exports = {loadParkInfo, loadAttractions, loadAttractionTypes, loadAreas, loadDetails};
+let getTimes = () => {
+    return new Promise ((resolve, reject) => {
+        $.ajax({
+					url:"https://theme-park-data.firebaseio.com/attractions.json",
+					success: (data) => {
+						console.log("area details for that id loaded");
+						resolve(data);//resolve passes data to then
+					},
+					error: () => {
+						reject(new Error("Area details failed to load"));
+					}
+				});
+
+    });
+};
+
+module.exports = {loadParkInfo, loadAttractions, loadAttractionTypes, loadAreas, loadDetails, getTimes};

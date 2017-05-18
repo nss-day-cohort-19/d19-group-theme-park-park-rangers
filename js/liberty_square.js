@@ -19,3 +19,4 @@ function displayLibertySquareAttractions(dat){
 }
 
 module.exports = {populateLibertySquare, displayLibertySquareAttractions};
+

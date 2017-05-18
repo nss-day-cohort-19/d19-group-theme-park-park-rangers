@@ -20,4 +20,7 @@ function displayTomorrowlandAttractions(dat){
 	});
 }
 
-module.exports = {populateTomorrowland, displayTomorrowlandAttractions};
+
+	});
+}
+module.exports = {populateTomorrowland, displayTomorrowlandDetails};

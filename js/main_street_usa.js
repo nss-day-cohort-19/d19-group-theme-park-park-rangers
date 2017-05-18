@@ -20,3 +20,4 @@ function displayMainStreetAttractions(dat){
 }
 
 module.exports = {populateMainStreet, displayMainStreetAttractions};
+
