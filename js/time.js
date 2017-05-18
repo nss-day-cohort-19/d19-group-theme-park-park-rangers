@@ -48,19 +48,23 @@ let timeFunction = function timeMenu(data, attractionData, parkType)
         let menuMeridian = timeselectedArray[1].substr(-2);
         let totalMinutes = (menuHour * 60) + menuMinute;
 
+
         loopevents(totalMinutes, menuMeridian, data, attractionData, parkType);
     });
 };
 
 
 function loopevents(totalMinutes, menuMeridian, parkInfo, attractionData, parkType) {
-
+    $("#time-display").empty();
     let hours;
     let minutes;
     let meridian;
     let openingHour = parseInt(parkInfo[0].operating_hours[0].opening);
     let openingMinutes = openingHour * 60;
     let timeArray4Objects = [];
+    let cards = "";
+
+
 
     for (let i = 0; i < attractionData.length; i++) {
         let attractObj = attractionData[i];
@@ -84,6 +88,9 @@ function loopevents(totalMinutes, menuMeridian, parkInfo, attractionData, parkTy
                         let magicalTurdObject = {name: attractObj.name, time: time, attractionType: attractObj.type_id};
                         timeArray4Objects.push(magicalTurdObject);
                         console.log("magical turd", magicalTurdObject);
+                        cards = `<p>${magicalTurdObject.name}</p>
+                                <p>${magicalTurdObject.time}</p>`;
+                        $("#time-display").append(cards);
                     }
 
                 }else if ((attractMinutes - totalMinutes) <= 30 && (attractMinutes - totalMinutes) >=0) {
@@ -92,7 +99,13 @@ function loopevents(totalMinutes, menuMeridian, parkInfo, attractionData, parkTy
                         let magicalTurdObject = {name: attractObj.name, time: time, attractionType: attractObj.type_id};
                         timeArray4Objects.push(magicalTurdObject);
                         console.log("magical turd", magicalTurdObject);
+
+                        cards += `<p>${magicalTurdObject.name}</p>
+                                    <p>${magicalTurdObject.time}</p>`;
+
+                        $("#time-display").append(cards);
                     }
+
                 }
 
                 let timeCompiled = " " + hours + ":" + minutes + " " + meridian;
