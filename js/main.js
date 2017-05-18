@@ -11,15 +11,18 @@ let attractory = require ("./attractory.js"),
 	main_street_usa = require("./main_street_usa.js"),
 	tomorrowland = require("./tomorrowland.js"),
 	cinderellaland = require("./cindrella.js"),
-	eventStuff = require("./events.js");
+	eventStuff = require("./events.js"),
+    tortureTime = require("./time.js");
 
 
 let headerTemplate = require('../templates/header.hbs'),
-	 footerTemplate = require('../templates/footer.hbs'),
+    footerTemplate = require('../templates/footer.hbs'),
     areaTemplate = require('../templates/main.hbs'),
     attractTemplate = require('../templates/attract.hbs');
+
 let attractionData;
 let parkInfo;
+let parkType;
 
 //load the area data and display areas if load is successful
 attractory.loadAreas().then((data) => {
@@ -35,14 +38,13 @@ attractory.loadAreas().then((data) => {
     (data) => {
 
         attractionData = data;
-        displayParkInfo(parkInfo);
-        timeMenu(parkInfo);
-});
-
-////////////////////////////////////////////
-function fetchShowTimeData(data) {
-  console.log("What is this", data);
-}
+        return attractory.loadAttractionTypes();
+}).then(
+    (data) => {
+    parkType = data;
+    displayParkInfo(parkInfo);
+    tortureTime.timeFunction(parkInfo, attractionData, parkType);
+}).catch(console.error);
 
 
 //tamela making load park info function
@@ -63,150 +65,6 @@ function displayParkInfo (data) {
 ////        console.log("is line 140 logging", createLI);
 //
 //    }
-
-
-
-// function displayTime(currentTime, hours, minutes, seconds) {
-//
-//
-//   var meridiem = "am"; // Default is AM
-//
-//   if (hours > 12) {
-//     hours = hours - 12; // Convert to 12-hour format
-//     meridiem = "PM"; // Keep track of the meridiem
-//   }
-//
-//   if (hours === 0) {
-//     hours = 12;
-//   }
-//
-//   if (hours < 10) {
-//
-//     hours = "0" + hours;
-//   }
-//
-//   if (minutes < 10) {
-//     minutes = "0" + minutes;
-//   }
-//   if (seconds < 10) {
-//     seconds = "0" + seconds;
-//   }
-//
-//   $('#clock').text(hours + ":" + minutes + " " + meridiem);
-// }
-//
-// $(function() {
-//
-//   var currentTime = new Date();
-//   var hours = 8;
-//   var minutes = 30;
-////   var seconds = currentTime.getSeconds();
-//
-//   displayTime(currentTime, hours, minutes);
-//
-//   $('#increment30').on('click', function() {
-//       console.log("is click event happening line 87");
-//        currentTime.setMinutes(currentTime.getMinutes() + 30);
-//        var hours = currentTime.getHours();
-//        var minutes = currentTime.getMinutes();
-////     var seconds = currentTime.getSeconds();
-//        displayTime(currentTime, hours, minutes);
-//        loopevents($("#clock").text());
-//
-//   });
-// });
-
-function timeMenu(data)
-{
-	var startTime = data[0].operating_hours[0].opening;
-	var closingTime = data[0].operating_hours[0].closing;
-	var pastNoon = false;
-	var hour = startTime;
-	var menuItem = `<option><a href="#">${startTime}:00AM</a></option>`;
-	$("#times").append(menuItem);
-//loop has to run 13 times for hours and 13 times for half ours which is 26 :)
-	for (var i = 0; i < 26; i++){
-		var newTime;
-
-		if ((i+1) % 2 === 0){
-			newTime = (hour + 1) + ":00";
-			hour++;
-//			console.log("Time: " + newTime);
-		}
-		else{
-			newTime = hour + ":30";
-//			console.log("Time: " + newTime);
-		}
-		if(newTime == "12:30"){
-			pastNoon = true;
-			hour = 0;
-		}
-
-		newTime += (pastNoon || newTime == "12:00") ? "PM" : "AM";
-		menuItem = `<option><a href="#">${newTime}</a></option>`;
-		$("#times").append(menuItem);
-
-		if (pastNoon && newTime == closingTime + ":00pm") break;
-	}
-
-    $("#increment30").click((event) =>{
-        let timeSelected = $("#times").val();
-        let timeselectedArray = timeSelected.split(":");
-        let menuHour = parseInt(timeselectedArray[0]);
-        let menuMinute = parseInt(timeselectedArray[1].substr(0,2));
-        let menuMeridian = timeselectedArray[1].substr(-2);
-        let totalMinutes = (menuHour * 60) + menuMinute;
-        loopevents(totalMinutes, menuMeridian);
-    });
-}
-
-function loopevents(totalMinutes, menuMeridian) {
-    let hours;
-    let minutes;
-    let meridian;
-    let openingHour = parseInt(parkInfo[0].operating_hours[0].opening);
-    let openingMinutes = openingHour * 60;
-    let timeArray4Objects = [];
-    for (let i = 0; i < attractionData.length; i++) {
-        let attractObj = attractionData[i];
-        if (attractObj.times !== undefined) {
-            let timesArray = attractObj.times;
-
-//////GREG!!!!!! WHY DID YOU MAKE THE TIMES STRINGS??????? WHYYYYYYYYYY.....
-            for (let poop = 0; poop < timesArray.length; poop++) {
-//time poop is the only time that works from here on out
-                let time = timesArray[poop];
-                let timeSplit = time.split(":");
-                hours = parseInt(timeSplit[0]);//sets first index which is the first number in the hour
-                minutes = parseInt(timeSplit[1].substr(0, 2));//minutes become 2nd index
-                meridian = timeSplit[1].substr(-2);
-                let attractMinutes = (hours * 60) + minutes;
-
-                if (totalMinutes === openingMinutes && menuMeridian === "AM") {
-
-                    if ((attractMinutes - totalMinutes) === -5) {
-
-                        let magicalTurdObject = {name: attractObj.name, time: time, attractionType: attractObj.type_id};
-                        timeArray4Objects.push(magicalTurdObject);
-                        console.log("do we have a magical turd?", timeArray4Objects);
-                    }
-
-                }
-
-                let timeCompiled = " " + hours + ":" + minutes + " " + meridian;
-                let eventName = attractObj.name;
-                let attractTypeID = attractObj.type_id;
-                let eventAndTime = eventName + timeCompiled;
-
-            }
-        }
-    }
-}
-
-
-
-
-
 
 
 
