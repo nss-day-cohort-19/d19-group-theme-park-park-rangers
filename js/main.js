@@ -12,7 +12,6 @@ let attractory = require ("./attractory.js"),
 	eventStuff = require("./events.js"),
 	tomorrowland = require("./tomorrowland.js"),
 	cinderellaland = require("./cindrella.js"),
-	eventStuff = require("./events.js"),
   tortureTime = require("./time.js");
 
 
@@ -59,8 +58,7 @@ function displayParkInfo (data) {
 //            e.stopPropagation();
 //            e.preventDefault();
 //        });
-//    });
-
+}
 
 function displayAreas(dat){
 	//$("#output").append(areaTemplate(data));
