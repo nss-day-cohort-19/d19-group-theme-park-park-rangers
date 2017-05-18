@@ -48,7 +48,7 @@ let loadAttractionTypes = () => {
 						//filter using lodash
 						let my_type_filter = _.filter(data, (item) => {
 							console.log("within loadAttractionTypes filter");
-							return (item.type_id == 1 || item.type_id == 2 || item.type_id == 3 || item.type_id == 5);
+							return (item.id == 1 || item.id == 2 || item.id == 3 || item.id == 5);
 						});
 						resolve(my_type_filter);//resolve passes data to then
 					},

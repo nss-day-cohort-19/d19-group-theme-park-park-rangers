@@ -1,7 +1,6 @@
 "use strict";
 
-let attractory = require("./attractory.js"),
-areaTemplate = require('../templates/main.hbs');
+let attractory = require("./attractory.js");
 
 function populateAdventureland(){
 	let attractions = {};
