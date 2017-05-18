@@ -1,9 +1,13 @@
 "use strict";
 
+console.log("hello time");
+
 let timeFunction = function timeMenu(data, attractionData, parkType)
 {
 	var startTime = data[0].operating_hours[0].opening;
 	var closingTime = data[0].operating_hours[0].closing;
+
+    console.log("start time", startTime);
 	var pastNoon = false;
 	var hour = startTime;
 	var menuItem = `<option><a href="#">${startTime}:00AM</a></option>`;
@@ -36,18 +40,21 @@ let timeFunction = function timeMenu(data, attractionData, parkType)
 	}
 
     $("#increment30").click((event) =>{
+        console.log("are you clicking?");
         let timeSelected = $("#times").val();
         let timeselectedArray = timeSelected.split(":");
         let menuHour = parseInt(timeselectedArray[0]);
         let menuMinute = parseInt(timeselectedArray[1].substr(0,2));
         let menuMeridian = timeselectedArray[1].substr(-2);
         let totalMinutes = (menuHour * 60) + menuMinute;
+
         loopevents(totalMinutes, menuMeridian, data, attractionData, parkType);
     });
 };
 
 
 function loopevents(totalMinutes, menuMeridian, parkInfo, attractionData, parkType) {
+
     let hours;
     let minutes;
     let meridian;
@@ -76,6 +83,7 @@ function loopevents(totalMinutes, menuMeridian, parkInfo, attractionData, parkTy
 
                         let magicalTurdObject = {name: attractObj.name, time: time, attractionType: attractObj.type_id};
                         timeArray4Objects.push(magicalTurdObject);
+                        console.log("magical turd", magicalTurdObject);
                     }
 
                 }else if ((attractMinutes - totalMinutes) <= 30 && (attractMinutes - totalMinutes) >=0) {
@@ -83,6 +91,7 @@ function loopevents(totalMinutes, menuMeridian, parkInfo, attractionData, parkTy
                     if((menuMeridian === meridian) || (totalMinutes === 690 && time === "12:00PM")){
                         let magicalTurdObject = {name: attractObj.name, time: time, attractionType: attractObj.type_id};
                         timeArray4Objects.push(magicalTurdObject);
+                        console.log("magical turd", magicalTurdObject);
                     }
                 }
 
