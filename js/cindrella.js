@@ -7,14 +7,14 @@ function populateCindrellaland(){
 	console.log("within populateCindrellaland");
 	attractory.loadAttractions(7)
 	.then((data) => {
-		displayCindrellalandDetails(data);
+		displayCindrellalandAttractions(data);
 	});
 }
 
-function displayCindrellalandDetails(dat){
+function displayCindrellalandAttractions(dat){
 	let output = $(".output");
 	$(".output").append(areaTemplate(dat));
 
 }
 
-module.exports = {populateCindrellaland, displayCindrellalandDetails};
+module.exports = {populateCindrellaland, displayCindrellalandAttractions};

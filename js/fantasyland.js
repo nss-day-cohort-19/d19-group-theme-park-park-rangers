@@ -4,17 +4,18 @@ let attractory = require("./attractory.js"),
 areaTemplate = require('../templates/main.hbs');
 
 function populateFantasyland(){
-	console.log("within populateFantasyland");
-	attractory.loadAttractions(5)
+	let attractions = {};
+	attractory.loadAttractions(6)
 	.then((data) => {
-		displayFantasylandDetails(data);
+		displayFantasylandAttractions(data);
 	});
 }
 
-function displayFantasylandDetails(dat){
-	let output = $(".output");
-	$(".output").append(areaTemplate(dat));
-
+function displayFantasylandAttractions(dat){
+	console.log("Fantasyland attractions", dat);
+	$.each( dat, function( key, value ) {
+  		console.log( key ,": " , value );
+	});
 }
 
-module.exports = {populateFantasyland, displayFantasylandDetails};
+module.exports = {populateFantasyland, displayFantasylandAttractions};

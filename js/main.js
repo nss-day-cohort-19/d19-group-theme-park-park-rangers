@@ -9,9 +9,10 @@ let attractory = require ("./attractory.js"),
 	frontierland = require("./frontierland.js"),
 	liberty_square = require("./liberty_square.js"),
 	main_street_usa = require("./main_street_usa.js"),
+	eventStuff = require("./events.js"),
 	tomorrowland = require("./tomorrowland.js"),
-	cinderellaland = require("./cindrella.js"),
-	eventStuff = require("./events.js");
+	cindrellaland = require("./cindrella.js");
+
 
 
 let headerTemplate = require('../templates/header.hbs'),
@@ -129,20 +130,6 @@ function loopevents(currentTime) {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-$(".help").click(() => {
-	console.log("card-block clicked");
-	//when it is clicked you should have id
-	//dependent on id call function to populate that area
-});
 
 function displayAreas(dat){
 	//$("#output").append(areaTemplate(data));

@@ -4,17 +4,18 @@ let attractory = require("./attractory.js"),
 areaTemplate = require('../templates/main.hbs');
 
 function populateAdventureland(){
-	console.log("within populateAdventureland");
+	let attractions = {};
 	attractory.loadAttractions(2)
 	.then((data) => {
-		displayAdventurelandDetails(data);
+		displayAdventurelandAttractions(data);
 	});
 }
 
-function displayAdventurelandDetails(dat){
-	let output = $(".output");
-	$(".output").append(areaTemplate(dat));
-
+function displayAdventurelandAttractions(dat){
+	console.log("Adventureland attractions", dat);
+	$.each( dat, function( key, value ) {
+  		console.log( key ,": " , value );
+	});
 }
 
-module.exports = {populateAdventureland, displayAdventurelandDetails};
+module.exports = {populateAdventureland, displayAdventurelandAttractions};

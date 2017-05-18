@@ -3,18 +3,20 @@
 let attractory = require("./attractory.js"),
 areaTemplate = require('../templates/main.hbs');
 
-function populateLibertySquareland(){
-	console.log("within populateLibertySquareland");
+function populateLibertySquare(){
+	let attractions = {};
 	attractory.loadAttractions(4)
 	.then((data) => {
-		displayLibertySquarelandDetails(data);
+		displayLibertySquareAttractions(data);
 	});
 }
 
-function displayLibertySquarelandDetails(dat){
-	let output = $(".output");
-	$(".output").append(areaTemplate(dat));
-
+function displayLibertySquareAttractions(dat){
+	console.log("LibertySquare attractions", dat);
+	$.each( dat, function( key, value ) {
+  		console.log( key ,": " , value );
+	});
 }
 
-module.exports = {populateLibertySquareland, displayLibertySquarelandDetails};
+module.exports = {populateLibertySquare, displayLibertySquareAttractions};
+

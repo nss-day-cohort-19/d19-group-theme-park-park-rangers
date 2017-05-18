@@ -4,17 +4,19 @@ let attractory = require("./attractory.js"),
 areaTemplate = require('../templates/main.hbs');
 
 function populateFrontierland(){
-	console.log("within populateFrontierland");
-	attractory.loadAttractions(3)
+	let attractions = {};
+	attractory.loadAttractions(6)
 	.then((data) => {
-		displayFrontierlandDetails(data);
+		displayFrontierlandAttractions(data);
 	});
 }
 
-function displayFrontierlandDetails(dat){
-	let output = $(".output");
-	$(".output").append(areaTemplate(dat));
-
+function displayFrontierlandAttractions(dat){
+	console.log("Frontierland attractions", dat);
+	$.each( dat, function( key, value ) {
+  		console.log( key ,": " , value );
+	});
 }
 
-module.exports = {populateFrontierland, displayFrontierlandDetails};
+module.exports = {populateFrontierland, displayFrontierlandAttractions};
+

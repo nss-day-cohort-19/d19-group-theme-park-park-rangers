@@ -28,7 +28,7 @@ let loadAttractions = (id) => {
 						console.log("successfully returned loadAttractions");
 						let my_attr_filter = _.filter(data, (item) => {
 							console.log("within loadAttractions filter");
-							return ((item.area_id == id) && (item.type_id == 1 || item.type_id == 2 || item.type_id == 3 || item.type_id == 5));
+							return ((item.area_id == id) && (item.type_id == 1 || item.type_id == 2 || item.type_id == 3 || item.type_id == 5) && item.times !== "");
 						});
 						resolve(my_attr_filter);//resolve passes data to then
 					},

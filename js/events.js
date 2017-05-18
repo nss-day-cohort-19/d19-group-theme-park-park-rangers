@@ -6,7 +6,7 @@ let main_street_usa = require("./main_street_usa.js"),//1
 	frontierland = require("./frontierland.js"),//3
 	liberty_square = require("./liberty_square.js"),//4
 	tomorrowland = require("./tomorrowland.js"),//6
-	cindrella = require("./cindrella.js");
+	cindrellaland = require("./cindrella.js");//7
 
 function activateEvents(){
 	//event listener for click event in particular area
@@ -37,19 +37,28 @@ function activateEvents(){
 		}else if(my_id == "sec--5"){
 			fantasyland.populateFantasyland();
 			console.log("my id is", my_id);
-
-		}else if(my_id == "sec--6"){
-			tomorrowland.populateTomorrowland();
-			console.log("my id is in 6", my_id);
-
+		}else if(my_id == "sec--1"){
+			main_street_usa.populateMainStreet();
+			console.log("my id is", my_id);
+		}else if(my_id == "sec--4"){
+			liberty_square.populateLibertySquare();
+			console.log("my id is", my_id);
+		}else if(my_id == "sec--5"){
+			fantasyland.populateFantasyland();
+			console.log("my id is", my_id);
+		}else if(my_id == "sec--3"){
+			frontierland.populateFrontierland();
+			console.log("my id is", my_id);
+		}else if(my_id == "sec--2"){
+			adventureland.populateAdventureland();
+			console.log("my id is", my_id);
 		}else if(my_id == "sec--7"){
-			cindrella.populateCindrellaland();
+			cindrellaland.populateCindrellaland();
 			console.log("my id is", my_id);
 
 		}
 	});
 		
 }
-
 
 module.exports = activateEvents;

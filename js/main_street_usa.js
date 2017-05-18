@@ -4,17 +4,20 @@ let attractory = require("./attractory.js"),
 areaTemplate = require('../templates/main.hbs');
 
 function populateMainStreet(){
-	console.log("within populateMainStreet");
+	let attractions = {};
 	attractory.loadAttractions(1)
 	.then((data) => {
-		displayMainStreetDetails(data);
+		displayMainStreetAttractions(data);
 	});
 }
 
-function displayMainStreetDetails(dat){
-	let output = $(".output");
+function displayMainStreetAttractions(dat){
 	$(".output").append(areaTemplate(dat));
-
+	console.log("mainstreet attractions", dat);
+	$.each( dat, function( key, value ) {
+  		console.log( key ,": " , value );
+	});
 }
 
-module.exports = {populateMainStreet, displayMainStreetDetails};
+module.exports = {populateMainStreet, displayMainStreetAttractions};
+
