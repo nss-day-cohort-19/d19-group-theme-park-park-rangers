@@ -76,7 +76,7 @@ function displayAdventurelandAttractions(dat){
         //the replace method is chopping off card-- and returning the number at the end
         //use this number to set ID's for H4 element
         let elementID = event.currentTarget.id.replace("card--", "");
-        $("#desc--" + elementID).toggle();
+        $("#desc--" + elementID).toggle("slow");//because it looks cool
         console.log("are you clicking", event.currentTarget);
         console.log("are you clicking", elementID);
     });

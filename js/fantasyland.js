@@ -56,7 +56,7 @@ function displayFantasylandAttractions(dat){
     $(".card-title").click((event)=>{
 
         let elementID = event.currentTarget.id.replace("card--", "");
-        $("#desc--" + elementID).toggle();
+        $("#desc--" + elementID).toggle("slow");
         console.log("are you clicking", event.currentTarget);
         console.log("are you clicking", elementID);
     });
