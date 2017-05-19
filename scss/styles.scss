@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
-
+@import url('https://fonts.googleapis.com/css?family=Leckerli+One');
 @import url("https://fonts.googleapis.com/css?family=Lato");
 
 //WARNING -- PETE HAS ALTERED CSS //
@@ -14,6 +14,7 @@ position: absolute;
 $background: #1d96d7;
 $white: #ebf7fc;
 $main-font: #253b56;
+$modal-color: #ADD8E6;
 
 //box colors
 $mainStreet-color: #730217;
@@ -27,10 +28,16 @@ $cinderllaland: #F2CF53;
 //fonts
 $mainFont: "Roboto", sans-serif;
 $secondaryFont: "Lato", sans-serif;
+$titleFont: "Leckerli One", cursive;
 
 
 $card-block-width: 100%;
 $card-block-border: 1px solid black;
+
+h1{
+  font-family: $titleFont;
+  font-size: 72px;
+}
 
 .card-wrapper {
   width: 30%;
@@ -90,6 +97,7 @@ $card-block-border: 1px solid black;
 .container-fluid,
 .jumbotron-fluid {
   background-color: $background;
+  padding: 15px 25px;
 }
 
 .footer-style {
@@ -127,6 +135,27 @@ a:hover {
   text-align: center;
 }
 
+
+.modal-body,
+.modal-header,
+.modal-footer,
+#time-display {
+  background-color: $background;
+  color: $white;
+}
+
+#header-handlebars{
+  background-color: $white;
+}
+
+.container{
+  padding-top: 32px 24px;
+}
+
+button{
+  background-color: #286090;
+}
+
 //-------------------------------------------------------------------------------------------------
 //// COLORS FOR MODALS - when you click on each area, modal has corresponding color (same as area)----------
 
@@ -151,6 +180,7 @@ a:hover {
 // // #sec--7 {
 // //   background-color: $cinder-color;
 // // }
+
 
 
 
