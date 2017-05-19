@@ -23,7 +23,6 @@ let headerTemplate = require('../templates/header.hbs'),
 
 let attractionData;
 let parkInfo;
-let parkType;
 
 //load the area data and display areas if load is successful
 attractory.loadAreas().then((data) => {
@@ -40,7 +39,7 @@ attractory.loadAreas().then((data) => {
         return attractory.loadAttractionTypes();
 }).then(
     (data) => {
-    parkType = data;
+    global.parkType = data;
     displayParkInfo(parkInfo);
     tortureTime.timeFunction(parkInfo, attractionData, parkType);
 }).catch(console.error);
