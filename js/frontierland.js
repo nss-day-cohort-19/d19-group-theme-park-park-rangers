@@ -1,5 +1,8 @@
 "use strict";
 
+var _ = require("lodash");
+
+
 let attractory = require("./attractory.js"),
 	areaTemplate = require("../templates/main.hbs"),
 	attractTemplate = require("../templates/attract.hbs");
@@ -12,6 +15,11 @@ function populateFrontierland(){
 }
 
 function displayFrontierlandAttractions(dat){
+    //data was not transfering all info, used global to send data
+    dat = _.filter(global.parkType, (item) =>{
+        return (item.id === 1 || item.id === 2 || item.id === 3 || item.id ===5);
+    });
+
 	let output = $(".help");
 	let attDiv = $('<div id="modal3" class="modal fade">');
 	attDiv.append(attractTemplate(dat));

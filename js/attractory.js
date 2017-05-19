@@ -30,7 +30,7 @@ let loadAttractions = (id) => {
 							console.log("within loadAttractions filter");
 							return ((item.area_id == id) && (item.type_id == 1 || item.type_id == 2 || item.type_id == 3 || item.type_id == 5) && item.times !== "");
 						});
-						resolve(my_attr_filter);//resolve passes data to then
+						resolve(data);//resolve passes data to then
 					},
 					error: () => {
 						reject("Attractions Data Failed to Load");
@@ -38,19 +38,19 @@ let loadAttractions = (id) => {
 				});
 			});
 };
-
+////////TYPESS
 let loadAttractionTypes = () => {
 			return new Promise ((resolve, reject) => {
 				$.ajax({
 					url:"https://theme-park-data.firebaseio.com/attraction_types.json",
 					success: (data) => {
 						console.log("success", data);
-						//filter using lodash
+//						filter_using lodash
 						let my_type_filter = _.filter(data, (item) => {
 							console.log("within loadAttractionTypes filter");
 							return (item.id == 1 || item.id == 2 || item.id == 3 || item.id == 5);
 						});
-						resolve(my_type_filter);//resolve passes data to then
+						resolve(data);//resolve passes data to then
 					},
 					error: () => {
 						reject("Attraction Types Data Failed to Load");
