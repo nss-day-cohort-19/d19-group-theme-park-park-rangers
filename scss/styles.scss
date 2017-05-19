@@ -97,6 +97,7 @@ h1{
 .container-fluid,
 .jumbotron-fluid {
   background-color: $background;
+  padding: 15px 25px;
 }
 
 .footer-style {
@@ -147,12 +148,11 @@ a:hover {
 }
 
 .container{
-  padding-top: 32px;
+  padding-top: 32px 24px;
 }
 
 button{
   background-color: #286090;
 }
-
 
 
