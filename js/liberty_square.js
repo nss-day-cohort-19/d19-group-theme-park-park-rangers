@@ -2,7 +2,6 @@
 
 var _ = require("lodash");
 
-
 let attractory = require("./attractory.js"),
 	areaTemplate = require("../templates/main.hbs"),
 	attractTemplate = require("../templates/attract.hbs");
@@ -21,13 +20,33 @@ function displayLibertySquareAttractions(dat){
     });
 
 	let output = $(".help");
-	let attDiv = $('<div id="modal4" class="modal fade">');
+	let attDiv = $('<div id="modal2" class="modal fade">');
 	attDiv.append(attractTemplate(dat));
+    $(".attractions").empty();
 	$(".attractions").append(attDiv);
-	$('#modal4').modal('toggle');  //data has to be loaded first before the modal so only requires one click to open
-//	$.each( dat, function( key, value ) {
-//  		console.log( key ,": " , value );
-//	});
+	$('#modal2').modal('toggle');
+
+    $(".card-block").click((event)=>{
+        let holdWhatClicked = event.currentTarget.id;
+        $("#" + holdWhatClicked).off("click");
+        let counter = 0;
+
+        let id = event.currentTarget.id.substr(-1);
+        
+
+        for (let i = 0; i < global.attractionData.length; i++) {
+            let attractID = global.attractionData[i];
+            if (attractID.type_id == id) {
+                let name = attractID.name;
+                let nameCard = `<p>${name}</p>`;
+                $("#card--" + id).append(nameCard);
+                counter++;
+                if (counter === 2) {
+                    break;
+                }
+            }
+        }
+    });
 }
 
 module.exports = {populateLibertySquare, displayLibertySquareAttractions};
