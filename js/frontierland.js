@@ -35,17 +35,34 @@ function displayFrontierlandAttractions(dat){
         let id = event.currentTarget.id.substr(-1);
 
         for (let i = 0; i < global.attractionData.length; i++) {
-            let attractID = global.attractionData[i];
-            if (attractID.type_id == id) {
-                let name = attractID.name;
-                let nameCard = `<p>${name}</p>`;
+            let attractObj= global.attractionData[i];
+            if (attractObj.type_id == id) {
+                let name = attractObj.name;
+                let times = "";
+                if (attractObj.times !== undefined) {
+                    times = attractObj.times.toString();
+                }
+                let nameCard = `<div class="getSomeClass" id="attractID${attractObj.id}">${name}
+                                    <div class="hide-p-tag">${attractObj.description}</div>
+                                    <div class="hide-p-tag">${times}</div>
+                                </div><br>`;
+
+
                 $("#card--" + id).append(nameCard);
                 counter++;
                 if (counter === 2) {
                     break;
                 }
+
             }
         }
+
+        $(".getSomeClass").click((event) => {
+            let currentAttraction = event.currentTarget.id;
+            $("#" + currentAttraction + " .hide-p-tag").show();
+        });
+
+
     });
 }
 
