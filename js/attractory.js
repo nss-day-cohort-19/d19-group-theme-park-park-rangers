@@ -39,6 +39,25 @@ let loadAttractions = (id) => {
 			});
 };
 
+let loadAttractionsList = (id) => {
+			return new Promise ((resolve, reject) => {
+				$.ajax({
+					url:"https://theme-park-data.firebaseio.com/attractions.json",
+					success: (data) => {
+						console.log("success", data);
+						let my_attrlist_filter = _.filter(data, (item) => {
+							console.log("within loadAttractionsList filter");
+							return (item.type_id == id);
+						});
+						resolve(my_attrlist_filter);//resolve passes data to then
+					},
+					error: () => {
+						reject("AttractionsList Data Failed to Load");
+					}
+				});
+			});
+};
+
 let loadAttractionTypes = () => {
 			return new Promise ((resolve, reject) => {
 				$.ajax({
@@ -103,4 +122,4 @@ let getTimes = () => {
     });
 };
 
-module.exports = {loadParkInfo, loadAttractions, loadAttractionTypes, loadAreas, loadDetails, getTimes};
+module.exports = {loadParkInfo, loadAttractions, loadAttractionsList, loadAttractionTypes, loadAreas, loadDetails, getTimes};
