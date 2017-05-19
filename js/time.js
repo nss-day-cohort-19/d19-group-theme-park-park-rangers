@@ -105,7 +105,7 @@ function loopevents(totalMinutes, menuMeridian, parkInfo, attractionData, parkTy
                         timeArray4Objects.push(magicalTurdObject);
                         console.log("magical turd", magicalTurdObject);
 
-                        cards += `<p>${magicalTurdObject.name}</p>
+                        cards = `<p>${magicalTurdObject.name}</p>
                                     <p>${magicalTurdObject.time}</p>`;
 
                         $("#time-display").append(cards);
@@ -113,10 +113,6 @@ function loopevents(totalMinutes, menuMeridian, parkInfo, attractionData, parkTy
 
                 }
 
-                let timeCompiled = " " + hours + ":" + minutes + " " + meridian;
-                let eventName = attractObj.name;
-                let attractTypeID = attractObj.type_id;
-                let eventAndTime = eventName + timeCompiled;
             }
         }
     }

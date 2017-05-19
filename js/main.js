@@ -20,28 +20,24 @@ let headerTemplate = require('../templates/header.hbs'),
     areaTemplate = require('../templates/main.hbs'),
     attractTemplate = require('../templates/attract.hbs');
 
-let attractionData;
-let parkInfo;
-let parkType;
-
 //load the area data and display areas if load is successful
 attractory.loadAreas().then((data) => {
   displayAreas(data);
     return attractory.loadParkInfo();
 }).then(
     (data) => {
-    parkInfo = data;
-    return attractory.getTimes();
+    global.parkHeader = data;
+    return attractory.getTimes();//
 }).then(
     (data) => {
 
-        attractionData = data;
+    global.attractionData = data;
         return attractory.loadAttractionTypes();
 }).then(
     (data) => {
-    parkType = data;
-    displayParkInfo(parkInfo);
-    tortureTime.timeFunction(parkInfo, attractionData, parkType);
+    global.parkType = data;
+    displayParkInfo(parkHeader);
+    tortureTime.timeFunction(parkHeader, attractionData, parkType);
 }).catch(console.error);
 
 

@@ -9,12 +9,12 @@ let main_street_usa = require("./main_street_usa.js"),//1
 	cindrellaland = require("./cindrella.js");//7
 function activateEvents(){
 	//event listener for click event in particular area
-	$(".help").click(() => {
+	$(".help").click((event) => {
 
 		console.log("card-block clicked");
 		//when it is clicked you should have id
 		//dependent on id call function to populate that area
-		var card = event.target.closest(".help");
+		var card = event.currentTarget.closest(".help");
 		let my_id = $(card).attr("id");
 		console.log("card", card, my_id);
 		if(my_id == "sec--6"){
@@ -26,9 +26,9 @@ function activateEvents(){
 			// $('#modal1').modal('toggle');
 			console.log("my id is", my_id);
 		}else if(my_id == "sec--4"){
+            console.log("Liberty Square id is", my_id);
 			liberty_square.populateLibertySquare();
 			// $('#modal4').modal('toggle');
-			console.log("my id is", my_id);
 		}else if(my_id == "sec--5"){
 			fantasyland.populateFantasyland();
 			// $('#modal5').modal('toggle');
