@@ -10,6 +10,7 @@ let attractory = require ("./attractory.js"),
   liberty_square = require("./liberty_square.js"),
   main_street_usa = require("./main_street_usa.js"),
   eventStuff = require("./events.js"),
+  display = require("./display.js"),
   tomorrowland = require("./tomorrowland.js"),
   cinderellaland = require("./cindrella.js"),
   tortureTime = require("./time.js");
@@ -50,7 +51,7 @@ attractory.loadAreas().then((data) => {
 function displayParkInfo (data) {
     $("#header-handlebars").append(headerTemplate(data[0]));
     $("#footer-handlebars").append(footerTemplate(data[0]));
-
+    display.selectList();
     //Might use this if I can get sub dropwn-menues to work
 //    $(document).ready(function(){
 //        $('.dropdown-submenu a.test').on("click", function(e){

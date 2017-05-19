@@ -5,7 +5,7 @@ let attractory = require("./attractory.js"),
 	attractTemplate = require("../templates/attract.hbs");
 
 function populateFantasyland(){
-	attractory.loadAttractions(6)
+	attractory.loadAttractions(5)
 	.then((data) => {
 		return displayFantasylandAttractions(data); //need to return to make sure data is there
 	});

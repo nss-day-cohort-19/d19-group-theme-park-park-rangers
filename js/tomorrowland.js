@@ -2,9 +2,10 @@
 
 let attractory = require("./attractory.js"),
 	areaTemplate = require("../templates/main.hbs"),
-	attractTemplate = require("../templates/attract.hbs");
+    attractTemplate = require("../templates/attract.hbs");
 
 function populateTomorrowland(){
+	let attractions = {};
 	attractory.loadAttractions(6)
 	.then((data) => {
 		return displayTomorrowlandAttractions(data); //need to return to make sure data is there

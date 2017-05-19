@@ -1,8 +1,8 @@
 "use strict";
 
 let attractory = require("./attractory.js"),
-	areaTemplate = require("../templates/main.hbs"),
-	attractTemplate = require("../templates/attract.hbs");
+areaTemplate = require('../templates/main.hbs'),
+attractTemplate = require('../templates/attract.hbs');
 
 function populateCindrellaland(){
 	console.log("within populateCindrellaland");
