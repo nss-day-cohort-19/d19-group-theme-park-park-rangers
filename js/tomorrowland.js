@@ -48,11 +48,11 @@ function displayTomorrowlandAttractions(dat){
     }
 
 
-    let attDiv = $('<div id="modal2" class="modal fade">');
+    let attDiv = $('<div id="tomorrowland" class="modal fade">');
 	attDiv.append(attractTypeTemplate(combinedArray));
     $(".attractions").empty();
 	$(".attractions").append(attDiv);
-	$('#modal2').modal('toggle');
+	$('#tomorrowland').modal('toggle');
 
     $(".card-title").click((event)=>{
 

@@ -47,11 +47,11 @@ function displayLibertySquareAttractions(dat){
     }
 
 
-    let attDiv = $('<div id="modal2" class="modal fade">');
+    let attDiv = $('<div id="libertysquare" class="modal fade">');
 	attDiv.append(attractTypeTemplate(combinedArray));
     $(".attractions").empty();
 	$(".attractions").append(attDiv);
-	$('#modal2').modal('toggle');
+	$('#libertysquare').modal('toggle');
 
     $(".card-title").click((event)=>{
 

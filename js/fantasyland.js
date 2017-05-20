@@ -47,11 +47,11 @@ function displayFantasylandAttractions(dat){
     }
 
 
-    let attDiv = $('<div id="modal2" class="modal fade">');
+    let attDiv = $('<div id="fanyasyland" class="modal fade">');
 	attDiv.append(attractTypeTemplate(combinedArray));
     $(".attractions").empty();
 	$(".attractions").append(attDiv);
-	$('#modal2').modal('toggle');
+	$('#fanyasyland').modal('toggle');
 
     $(".card-title").click((event)=>{
 

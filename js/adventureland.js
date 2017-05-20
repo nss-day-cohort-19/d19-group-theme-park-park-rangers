@@ -63,12 +63,12 @@ function displayAdventurelandAttractions(dat){
     console.log("did I set my data up correctly", combinedArray);
 
 //pass in this new data to the template
-    let attDiv = $('<div id="modal2" class="modal fade">');
+    let attDiv = $('<div id="adventureland" class="modal fade">');
 	attDiv.append(attractTypeTemplate(combinedArray));
     //this div needs to be emptied each time so the information would not continuosly add
     $(".attractions").empty();
 	$(".attractions").append(attDiv);
-	$('#modal2').modal('toggle');
+	$('#adventureland').modal('toggle');
 
 //add event listener to the h4 that will be the attraction name
     $(".card-title").click((event)=>{

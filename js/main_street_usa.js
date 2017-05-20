@@ -47,11 +47,11 @@ function displayMainStreetAttractions(dat){
     }
 
 
-    let attDiv = $('<div id="modal2" class="modal fade">');
+    let attDiv = $('<div id="mainstreet" class="modal fade">');
 	attDiv.append(attractTypeTemplate(combinedArray));
     $(".attractions").empty();
 	$(".attractions").append(attDiv);
-	$('#modal2').modal('toggle');
+	$('#mainstreet').modal('toggle');
 
     $(".card-title").click((event)=>{
 
