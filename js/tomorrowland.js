@@ -7,7 +7,6 @@ let attractory = require("./attractory.js"),
 
 //getter
 function populateTomorrowland(id){
-	let attractions = {};
 	attractory.loadAttractions(id)
 	.then((data) => {
 		return displayTomorrowlandAttractions(data, id); //need to return to make sure data is there

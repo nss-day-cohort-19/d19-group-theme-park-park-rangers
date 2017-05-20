@@ -40,7 +40,7 @@ attractory.loadAreas().then((data) => {
         return attractory.loadAttractionTypes();
 }).then(
     (data) => {
-    parkType = data;
+    global.parkType = data;
     displayParkInfo(parkInfo);
     tortureTime.timeFunction(parkInfo, attractionData, parkType);
 }).catch(console.error);
