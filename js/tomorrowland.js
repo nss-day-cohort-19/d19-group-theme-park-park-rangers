@@ -2,26 +2,22 @@
 
 let attractory = require("./attractory.js"),
 	areaTemplate = require("../templates/main.hbs"),
-    attractTemplate = require("../templates/attract.hbs");
+    attractTemplate = require("../templates/attract.hbs"),
+    modal = require("./modal.js");
 
-function populateTomorrowland(){
+//getter
+function populateTomorrowland(id){
 	let attractions = {};
-	attractory.loadAttractions(6)
+	attractory.loadAttractions(id)
 	.then((data) => {
-		return displayTomorrowlandAttractions(data); //need to return to make sure data is there
+		return displayTomorrowlandAttractions(data, id); //need to return to make sure data is there
 	});
 }
 
-function displayTomorrowlandAttractions(dat){
-	let output = $(".help");
-	let attDiv = $('<div id="modal6" class="modal fade">');
-	attDiv.append(attractTemplate(dat));
-	$(".attractions").append(attDiv);
-	$('#modal6').modal('toggle'); //data has to be loaded first before the modal so only requires one click to open
-	console.log("tomorrowland attractions", dat);
-	$.each( dat, function( key, value ) {
-  		console.log( key ,": " , value );
-	});
+//setter
+function displayTomorrowlandAttractions(dat, id){
+	console.log("Tomorrowland", dat, id);
+	modal.displayModal(dat,id);
 }
 
 module.exports = {populateTomorrowland, displayTomorrowlandAttractions};

@@ -2,25 +2,21 @@
 
 let attractory = require("./attractory.js"),
 	areaTemplate = require("../templates/main.hbs"),
-	attractTemplate = require("../templates/attract.hbs");
+	attractTemplate = require("../templates/attract.hbs"),
+	modal = require("./modal.js");
 
-function populateMainStreet(){
-	attractory.loadAttractions(1)
+//getter
+function populateMainStreet(id){
+	attractory.loadAttractions(id)
 	.then((data) => {
-		return displayMainStreetAttractions(data); //need to return to make sure data is there
+		return displayMainStreetAttractions(data, id); //need to return to make sure data is there
 	});
 }
 
-function displayMainStreetAttractions(dat){
-	let output = $(".help");
-	let attDiv = $('<div id="modal1" class="modal fade">');
-	attDiv.append(attractTemplate(dat));
-	$(".attractions").append(attDiv);
-	$('#modal1').modal('toggle'); //data has to be loaded first before the modal so only requires one click to open
-	console.log("mainstreet attractions", dat);
-	$.each( dat, function( key, value ) {
-  		console.log( key ,": " , value );
-	});
+//setter
+function displayMainStreetAttractions(dat, id){
+	console.log("Main Street", dat, id);
+	modal.displayModal(dat,id);
 }
 
 module.exports = {populateMainStreet, displayMainStreetAttractions};

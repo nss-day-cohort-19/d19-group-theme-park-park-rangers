@@ -17,35 +17,38 @@ function activateEvents(){
 		//dependent on id call function to populate that area
 		var card = event.target.closest(".help");
 		let my_id = $(card).attr("id");
+		my_id = my_id.substr(5);
+		my_id = Number(my_id);
 		console.log("card", card, my_id);
-		if(my_id == "sec--6"){
-			tomorrowland.populateTomorrowland();
-			// $('#modal6').modal('toggle');      //////commented all of these out and put them each in the corresponding .js file after the data is appended......the data wasn't loading first in order for the modal to be brought up on just one click
-			console.log("my id is", my_id);
-		}else if(my_id == "sec--1"){
-			main_street_usa.populateMainStreet();
-			// $('#modal1').modal('toggle');
-			console.log("my id is", my_id);
-		}else if(my_id == "sec--4"){
-			liberty_square.populateLibertySquare();
-			// $('#modal4').modal('toggle');
-			console.log("my id is", my_id);
-		}else if(my_id == "sec--5"){
-			fantasyland.populateFantasyland();
-			// $('#modal5').modal('toggle');
-			console.log("my id is", my_id);
-		}else if(my_id == "sec--3"){
-			frontierland.populateFrontierland();
-			// $('#modal3').modal('toggle');
-			console.log("my id is", my_id);
-		}else if(my_id == "sec--2"){
-			adventureland.populateAdventureland();
-			// $('#modal2').modal('toggle');
-			console.log("my id is", my_id);
-		}else if(my_id == "sec--7"){
-			cindrellaland.populateCindrellaland();
-			// $('#modal7').modal('toggle');
-			console.log("my id is", my_id);
+		switch(my_id){
+			case 1:
+				main_street_usa.populateMainStreet(my_id);
+				console.log("my id is", my_id);
+				break;
+			case 2:
+				adventureland.populateAdventureland(my_id);
+				console.log("my id is", my_id);
+				break;
+			case 3:
+				frontierland.populateFrontierland(my_id);
+				console.log("my id is", my_id);
+				break;
+			case 4:
+				liberty_square.populateLibertySquare(my_id);
+				console.log("my id is", my_id);
+				break;
+			case 5:
+				fantasyland.populateFantasyland(my_id);
+				console.log("my id is", my_id);
+				break;
+			case 6:
+				tomorrowland.populateTomorrowland(my_id);
+				console.log("my id is", my_id);
+				break;
+			case 7:
+				cindrellaland.populateCindrellaland(my_id);
+				console.log("my id is", my_id);
+				break;
 		}
 	});
 
