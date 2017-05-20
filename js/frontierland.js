@@ -5,10 +5,12 @@ let attractory = require("./attractory.js"),
 	attractTypeTemplate = require("../templates/attractType.hbs"),
     _ = require("lodash");
 
-function populateFrontierland(){
-	attractory.loadAttractions(3)
+
+//getter
+function populateFrontierland(id){
+	attractory.loadAttractions(id)
 	.then((data) => {
-		return displayFrontierlandAttractions(data); //need to return to make sure data is there
+		return displayFrontierlandAttractions(data, id); //need to return to make sure data is there
 	});
 }
 
@@ -60,6 +62,7 @@ function displayFrontierlandAttractions(dat){
         console.log("are you clicking", event.currentTarget);
         console.log("are you clicking", elementID);
     });
+
 }
 
 

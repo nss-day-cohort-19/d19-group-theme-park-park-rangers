@@ -5,11 +5,12 @@ let attractory = require("./attractory.js"),
 	attractTypeTemplate = require("../templates/attractType.hbs"),
     _ = require("lodash");
 
-function populateTomorrowland(){
-	let attractions = {};
-	attractory.loadAttractions(6)
+
+//getter
+function populateTomorrowland(id){
+	attractory.loadAttractions(id)
 	.then((data) => {
-		return displayTomorrowlandAttractions(data); //need to return to make sure data is there
+		return displayTomorrowlandAttractions(data, id); //need to return to make sure data is there
 	});
 }
 
@@ -61,6 +62,7 @@ function displayTomorrowlandAttractions(dat){
         console.log("are you clicking", event.currentTarget);
         console.log("are you clicking", elementID);
     });
+
 }
 
 module.exports = {populateTomorrowland, displayTomorrowlandAttractions};

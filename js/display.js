@@ -22,10 +22,6 @@ function displayAttractionsList(dat, attract_id){
 	attDiv.append(attractTemplate(dat));
 	$(".attractions-list").append(attDiv);
 	$(`#modal${attract_id}`).modal('toggle');
-	/*$(`#modal${attract_id}`).on("hidden.bs.modal", function(){
-    	$(".modal-body1").html("");
-	});*/
-
 }
 
 module.exports = {selectList, displayAttractionsList};

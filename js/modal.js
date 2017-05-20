@@ -1,29 +1,18 @@
 "use strict";
+var _ = require("../lib/node_modules/lodash");
+
+let	attractTemplate = require("../templates/attract-group.hbs");
 
 
 
-
-let attractory = require("./attractory.js"),
-	areaTemplate = require("../templates/main.hbs"),
-	attractTypeTemplate = require("../templates/attractType.hbs"),
-    _ = require("lodash");
-
-
-//getter
-function populateAdventureland(id){
-	attractory.loadAttractions(id)
-	.then((data) => {
-		return displayAdventurelandAttractions(data, id); //need to return to make sure data is there
-	});
-}
-
-
-//made separate HBS template so these ID's would not conflict with nav section
-function displayAdventurelandAttractions(dat){
-
-    //    data was not transfering Rides, Restaurants, Show, and Character Meet, used global to send data
-    let types = _.filter(global.parkType, (item) =>{
-        return (item.id === 1 || item.id === 2 || item.id === 3 || item.id ===5);
+function displayModal(dat,id){
+	if(dat.item_id === 1){
+		let title = "Rides";
+	}
+	//aj plugged in tamela's code below
+	//    data was not transfering Rides, Restaurants, Show, and Character Meet, used global to send data
+    let types = _.filter(global.parkType, (item) => {
+        return (item.id === 1 || item.id === 2 || item.id === 3 || item.id === 5);
     });
 
     //making new array to hold mew object to pass to template. Without this the above information will not be available, handelbars seems to like arrays
@@ -43,7 +32,7 @@ function displayAdventurelandAttractions(dat){
         for (let a = 0; a < dat.length; a++) {
             let attraction = dat[a];
             //if the area ID equals the hard-coded passed in arg of 2 AND if the attraction type_id equals what the type ID is, then combine data
-            if (attraction.area_id === 2  && attraction.type_id === type.id) {
+            if (attraction.type_id === type.id) {
                 //set current name and description
                 let combinedData = {
                     id: attraction.id,
@@ -64,25 +53,27 @@ function displayAdventurelandAttractions(dat){
 
     console.log("did I set my data up correctly", combinedArray);
 
-//pass in this new data to the template
-    let attDiv = $('<div id="adventureland" class="modal fade">');
-	attDiv.append(attractTypeTemplate(combinedArray));
-    //this div needs to be emptied each time so the information would not continuosly add
-    $(".attractions").empty();
+	let attDiv = $(`<div id="modal${id}" class="modal fade">`);
+	attDiv.append(attractTemplate(combinedArray));
 	$(".attractions").append(attDiv);
-	$('#adventureland').modal('toggle');
+	$(`#modal${id}`).modal('toggle'); //data has to be loaded first before the modal so only requires one click to open
+	console.log("In modal in modal in modal");
+	$.each(dat, function(key, value ) {
+  		console.log( key ,": " , value );
+	});
 
-//add event listener to the h4 that will be the attraction name
+	//plugged in tamela's code for event listener
+	//add event listener to the h4 that will be the attraction name
     $(".card-title").click((event)=>{
         //need to set unique ID for each h4 that is clicked so information can properly toggle
         //the replace method is chopping off card-- and returning the number at the end
         //use this number to set ID's for H4 element
         let elementID = event.currentTarget.id.replace("card--", "");
-        $("#desc--" + elementID).toggle("slow");//because it looks cool
+        $("#desc--" + elementID).toggle();
         console.log("are you clicking", event.currentTarget);
         console.log("are you clicking", elementID);
     });
 
 }
 
-module.exports = {populateAdventureland, displayAdventurelandAttractions};
+module.exports = {displayModal};

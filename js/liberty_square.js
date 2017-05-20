@@ -5,10 +5,12 @@ let attractory = require("./attractory.js"),
 	attractTypeTemplate = require("../templates/attractType.hbs"),
     _ = require("lodash");
 
-function populateLibertySquare(){
-	attractory.loadAttractions(4)
+
+//getter
+function populateLibertySquare(id){
+	attractory.loadAttractions(id)
 	.then((data) => {
-		return displayLibertySquareAttractions(data); //need to return to make sure data is there
+		return displayLibertySquareAttractions(data, id); //need to return to make sure data is there
 	});
 }
 
@@ -60,6 +62,7 @@ function displayLibertySquareAttractions(dat){
         console.log("are you clicking", event.currentTarget);
         console.log("are you clicking", elementID);
     });
+
 }
 
 module.exports = {populateLibertySquare, displayLibertySquareAttractions};

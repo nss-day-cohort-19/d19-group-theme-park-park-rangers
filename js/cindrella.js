@@ -5,11 +5,13 @@ let attractory = require("./attractory.js"),
 	attractTypeTemplate = require("../templates/attractType.hbs"),
     _ = require("lodash");
 
-function populateCindrellaland(){
+
+//getter
+function populateCindrellaland(id){
 	console.log("within populateCindrellaland");
-	attractory.loadAttractions(7)
+	attractory.loadAttractions(id)
 	.then((data) => {
-		return displayCindrellalandAttractions(data); //need to return to make sure data is there
+		return displayCindrellalandAttractions(data, id); //need to return to make sure data is there
 	});
 }
 
@@ -53,6 +55,7 @@ function displayCindrellalandAttractions(dat){
     $(".attractions").empty();
 	$(".attractions").append(attDiv);
 	$('#cinderellaland').modal('toggle');
+
 
     $(".card-title").click((event)=>{
 
