@@ -23,7 +23,6 @@ let headerTemplate = require('../templates/header.hbs'),
 
 let attractionData;
 let parkInfo;
-let parkType;
 
 //load the area data and display areas if load is successful
 attractory.loadAreas().then((data) => {
