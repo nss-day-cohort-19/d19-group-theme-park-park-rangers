@@ -1,7 +1,7 @@
 "use strict";
 
 let attractory = require("./attractory.js"),
-	attractTemplate = require("../templates/attract.hbs");
+	attractTemplate = require("../templates/attract-select.hbs");
 
 function selectList(){
 	$("#sel-attr").change (() => {
@@ -18,10 +18,10 @@ function selectList(){
 
 function displayAttractionsList(dat, attract_id){
 	console.log("in displayAttractionsList");
-	let attDiv = $(`<div id="modal${attract_id}" class="modal fade">`);
+	let attDiv = $(`<div id="modalselect${attract_id}" class="modal fade">`);
 	attDiv.append(attractTemplate(dat));
 	$(".attractions-list").append(attDiv);
-	$(`#modal${attract_id}`).modal('toggle');
+	$(`#modalselect${attract_id}`).modal('toggle');
 }
 
 module.exports = {selectList, displayAttractionsList};
