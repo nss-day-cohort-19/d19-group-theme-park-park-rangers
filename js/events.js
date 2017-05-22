@@ -46,7 +46,7 @@ function activateEvents(){
 				console.log("my id is", my_id);
 				break;
 			case 7:
-				cindrellaland.populateCindrellaland(my_id);
+				//cindrellaland.populateCindrellaland(my_id);
 				console.log("my id is", my_id);
 				break;
 		}

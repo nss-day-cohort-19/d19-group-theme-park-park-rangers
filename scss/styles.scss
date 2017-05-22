@@ -40,8 +40,6 @@ h1{
 }
 
 .card-wrapper {
-  width: 30%;
-  float: left;
   text-align: center;
   position: relative;
 }
@@ -64,6 +62,8 @@ h1{
 
 .card-block {
   margin: 1em;
+  border-width:solid 1 em;
+  text-align: center;
 }
 
 .card-img {
@@ -125,7 +125,7 @@ a {
 }
 
 a:hover {
-  color: $mainStreet-color;
+  color: lime;
 }
 
 .time-card {

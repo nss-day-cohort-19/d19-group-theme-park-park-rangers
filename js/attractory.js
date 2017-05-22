@@ -1,6 +1,9 @@
 "use strict";
 //syntax to use lodash
 var _ = require("../lib/node_modules/lodash");
+var helpers = require('../lib/node_modules/handlebars-helpers')();
+//=> returns object with all (130+) helpers
+
 
 
 console.log("i am in attractory.js");
@@ -28,7 +31,7 @@ let loadAttractions = (id) => {
 						console.log("success", data);
 						let my_attr_filter = _.filter(data, (item) => {
 							console.log("within loadAttractions filter");
-							return ((item.area_id == id) && (item.type_id == 1 || item.type_id == 2 || item.type_id == 3 || item.type_id == 5) && item.times !== "");
+							return ((item.area_id == id) && (item.type_id == 1 || item.type_id == 2 || item.type_id == 3 || item.type_id === 4 || item.type_id == 5 || item.type_id == 8) && item.times !== "");
 						});
 						resolve(my_attr_filter);//resolve passes data to then
 					},
@@ -67,7 +70,7 @@ let loadAttractionTypes = () => {
 						//filter using lodash
 						let my_type_filter = _.filter(data, (item) => {
 							console.log("within loadAttractionTypes filter");
-							return (item.id == 1 || item.id == 2 || item.id == 3 || item.id == 5);
+							return (item.id == 1 || item.id == 2 || item.id == 3 || item.id == 4 || item.id == 5 || item.id == 8);
 						});
 						resolve(my_type_filter);//resolve passes data to then
 					},
@@ -83,8 +86,11 @@ let loadAreas = () => {
 				$.ajax({
 					url:"https://theme-park-data.firebaseio.com/areas.json",
 					success: (data) => {
-						console.log("loadAreas loaded", data);
-						resolve(data);//resolve passes data to then
+						let my_area_filter = _.filter(data, (item) => {
+							console.log("within loadAttractionsList filter");
+							return (item.id !== 7);
+						});
+						resolve(my_area_filter);//resolve passes data to then
 					},
 					error: () => {
 						reject(new Error("Areas failed to load"));

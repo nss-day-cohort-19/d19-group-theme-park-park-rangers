@@ -1,25 +1,30 @@
-<div class="modal-dialog" role="document">
-    <div class="modal-content" style="background-color:orange;">
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">
 
          <div class='modal-body1'>
-            {{#each this}}
-            <section id="sec--{{id}}" class="help" style="background-color:{{colorTheme}}">
+          {{#each this}}
+            <section id="sec--{{id}}" class="help">
               <div class="col-md-6 wrapper">
                 <div class="card-text-center">
-                  <div class='card-block'>
-                                  <h2>{{type}}</h2>
-                                   {{#each attractions}}
-                    <h4 id="card--{{id}} "class="card-title"><a>{{name}}</a></h4>
-                    <h6 class="time-size-hbs">{{times}}</h6>
-                    <h4 id="desc--{{id}}" class="hide-description">{{description}}</h4>
+                  
+                   <div class="card-title"><h2><i>{{type}}</i></h2></div>
+            
+                    {{#each attractions}}
+                  
+                       <div class='card-block card-text-center' style="border: 0.5px solid;  background-color: {{area_id}};">
+                     
+                        <h3 id="card--{{id}} " class="card-text-center"><a>{{name}}</a></h3>
+                         <h4 id="desc--{{id}}" class="hide-description">{{description}}</h4>
+                          <div class="card-text-center"> <h5 class="time-size-hbs">{{times}}</h5></div>
+                        </div>
                     {{/each}}
-                  </div>
+                
                 </div>
               </div>
             </section>
-            {{/each}}
+          {{/each}}
         </div>
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
